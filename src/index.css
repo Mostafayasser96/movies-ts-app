@@ -13,11 +13,12 @@ code {
 }
 /* header styles */
 .carousel{
-  height: 600px;
+  height: 640px;
   background-color: red;
   width: 100%;
-  position: absolute;
+  position: absolute!important;
   top: 0px;
+  margin-bottom: 200px;
 }
 .parent-nav{
   padding: 23px 20px 15px 20px;
@@ -49,5 +50,191 @@ code {
 }
 .inner-nav-link, .genres-dropdown, .country-dropdown:hover{
   color: rgb(0, 162, 255);
+}
+.navbar-form{
+  display: inline-flex;
+}
+.navbar-form{
+  width: 28%;
+  position: 'absolute';
+  background-color: transparent;
+  border-radius: 25px;
+  color: white;
+  outline: none;
+  font-size: 17px;
+  font-weight: 500;
+  border: none;
+}
+.navbar-form:hover{
+  background-color: white!important;
+}
+.search-input{
+  font-size: 17px !important;
+  padding-left: 60px!important;
+  height: 45px!important;
+  border-radius: 25px!important;
+  background-color: transparent!important;
+  color: white!important;
+  font-weight: 500!important;
+  border: none!important;
+}
+.search-btn{
+  position: absolute!important;
+  background-color: transparent!important;
+  border: none!important;
+  padding: 11px 0px 5px 27px!important;
+  cursor: default!important;
+}
+.search-i{
+  font-size: 17px!important;
+  cursor: pointer!important;
+  outline: none!important;
+}
+.register{
+  width: 13%;
+  display: flex;
+  justify-content: space-between;
+  background-color: inherit;
+  margin-left: 6%;
+}
+.register:hover{
+  color: white;
+  cursor: pointer;
+}
+.profile{
+  width: 35px;
+  height: 35px;
+  background-color: blue;
+  border-radius: 30px;
+  padding-right: 2px;
+}
+.profile-i{
+  color: white;
+  font-size: 25px;
+  padding-top: 6px;
+}
+.register-p{
+  padding-top: 6px;
+  color: white;
+  padding-left: 10px!important;
+}
+.website-info{
+  position: absolute;
+  margin-top: 43%;
+  width: 100%;
+  text-align: left;
+  padding-left: 20px;
+  background-color: black;
+  height: 200px;
+
+}
+.info-h{
+  font-size: 23px;
+  color: white;
+}
+.info-p{
+  font-size: 15px;
+  color: white;
+  width: 95%;
+  margin-bottom: 0px;
+}
+.p-strong-1{
+  color: white;
+}
+.p-strong-2{
+  color: white;
+}
+.p-strong-3{
+  border-radius: 20px;
+  background-color: black;
+  color: white;
+  padding: 0px 10px;
+}
+.social-media{
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+}
+.social-i{
+  padding-right: 10px;
+  margin-top: 2px;
+}
+.social-media p{
+  font-size: 10px;
+  margin-top: 1px;
+}
+.facebook-btn, .twitter-btn,
+.email-btn, .pinterest-btn,
+.whatsapp-btn, .telegram-btn,
+.more-dropdown{
+  height: 28px!important;
+  border-radius: 0px!important;
+  display: flex!important;
+  justify-content: space-between!important;
+  padding: 6px 15px 4px 7px!important;
+  margin-right: 7px;
+  text-transform: capitalize!important;
+}
+
+.facebook-btn{
+  background-color: #3b5998!important;
+}
+.twitter-btn{
+  background-color: #569cdb!important;
+}
+.email-btn{
+  background-color: #70717a!important;
+}
+.pinterest-btn{
+  background-color: #F52B29!important;
+}
+.whatsapp-btn{
+  background-color: #0ED100!important;
+}
+.telegram-btn{
+  background-color: #2881D1!important;
+}
+
+.more-dropdown{
+  background-color: #993E05!important;
+  width: 20%;
+  cursor: pointer;
+  padding: 0px!important;
+}
+.more-toggle{
+  display: flex!important;
+  height: inherit!important;
+  padding: 7px!important;
+  text-transform: capitalize!important;
+  justify-content: space-between!important;
+  background-color: inherit!important;
+  outline: none!important;
+  border-radius: 0px!important;
+  color: white!important;
+}
+.more-toggle p span{
+  margin-right: 12px;
+}
+.print, .gmail, .linkedin, .email-app,
+.tumblr, .messenger, .more-item, .add-this{
+  display: flex!important;
+  width: 100%!important;
+  height: 20px!important;
+  justify-content: space-between!important;
+  padding-right: 65%!important;
+  color: blue!important;
+  padding: 3px!important;
+}
+.print .gmail .linkedin .email-app
+.tumblr .messenger .more-item .add-this:hover{
+  background-color: #2881D1!important;
+  color: white;
+}
+.more-menu{
+  outline: none;
+  border-radius: 0px!important;
+}
+.social-item-i{
+  margin-right: 10px;
 }
 /* end of header styles */
