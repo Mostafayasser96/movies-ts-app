@@ -13,7 +13,6 @@ import {
 	faPrint
 } from '@fortawesome/free-solid-svg-icons';
 import {
-	Carousel,
 	Form,
 	FormControl,
 	Nav,
@@ -22,7 +21,6 @@ import {
 	Button,
 	NavItem,
 	Dropdown,
-	// HTMLDivElement,
 
 } from 'react-bootstrap';
 import {
@@ -31,7 +29,7 @@ import {
 	faPinterest,
 	faWhatsapp,
 	faLinkedin,
-	faTumblr,
+	faTumblrSquare,
 
 } from "@fortawesome/free-brands-svg-icons";
 import {
@@ -45,7 +43,7 @@ import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
 // import * as ReactBootstrap from "react-bootstrap";
 
 const Header = () => {
-	const messengerLookup: IconLookup = { prefix: 'fas', iconName: 'coffee' };
+	const messengerLookup: IconLookup = { prefix: 'fad', iconName: 'facebook-messenger' };
 	const messengerIconDefinition: IconDefinition = findIconDefinition(messengerLookup);
 	const gmailLookup: IconLookup = { prefix: 'fad', iconName: 'google-plus' };
 	const gmailIconDefinition: IconDefinition = findIconDefinition(gmailLookup);
@@ -171,15 +169,7 @@ const Header = () => {
 
 			</Navbar>
 
-			<Carousel className='carousel'>
-				<Carousel.Item className='carousel-item1'>
-
-				</Carousel.Item>
-				<Carousel.Item>
-
-				</Carousel.Item>
-
-			</Carousel>
+			
 			<div className='website-info'>
 				<h3 className='info-h'>
 					Watch Movies Online Free
@@ -230,7 +220,7 @@ const Header = () => {
 								<p>Print</p>
 							</DropdownItem>
 							<DropdownItem href='#' className='gmail'>
-								<FontAwesomeIcon icon={gmailIconDefinition} className='social-item-i' />
+								<FontAwesomeIcon icon={['fab', 'google-drive']} className='social-item-i' />
 								<p>Gmail</p>
 							</DropdownItem>
 							<DropdownItem href='#' className='linkedin'>
@@ -242,20 +232,20 @@ const Header = () => {
 								<p>Email App</p>
 							</DropdownItem>
 							<DropdownItem href='#' className='tumblr'>
-								<FontAwesomeIcon icon={faTumblr} className='social-item-i' />
+								<FontAwesomeIcon icon={faTumblrSquare} className='social-item-i' />
 								<p>Tumblr</p>
 							</DropdownItem>
 							<DropdownItem href='#' className='messenger'>
-								<FontAwesomeIcon icon={messengerIconDefinition} className='social-item-i' />
+								<FontAwesomeIcon icon={['fab', 'facebook-messenger']} className='social-item-i' />
 								<p>Messenger</p>
 							</DropdownItem>
 							{/* Note: There is a modal that appears when clicking on more-item */}
 							<DropdownItem href='#' className='more-item'>
-								<FontAwesomeIcon icon={faPlus} />
-								<p>More...&#40;181&#40;</p>
+								<FontAwesomeIcon icon={faPlus} className='more-item-i' />
+								<p>More...&#40;181&#41;</p>
 							</DropdownItem>
 							<DropdownItem href='#' className='add-this'>
-								<FontAwesomeIcon icon={faPlus} />
+								<FontAwesomeIcon icon={faPlus} className='add-this-i' />
 								<p>Add This</p>
 							</DropdownItem>
 						</DropdownMenu>
