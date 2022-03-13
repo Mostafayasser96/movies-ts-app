@@ -22,7 +22,7 @@ code {
 }
 .parent-nav{
   padding: 23px 20px 15px 20px;
-  z-index: 999;
+  z-index: 999; 
   width: 100%;
   height: 13%;
   position: absolute;
@@ -50,9 +50,6 @@ code {
 }
 .inner-nav-link, .genres-dropdown, .country-dropdown:hover{
   color: rgb(0, 162, 255);
-}
-.navbar-form{
-  display: inline-flex;
 }
 .navbar-form{
   width: 28%;
@@ -92,8 +89,6 @@ code {
 }
 .register{
   width: 13%;
-  display: flex;
-  justify-content: space-between;
   background-color: inherit;
   margin-left: 6%;
 }
@@ -115,7 +110,7 @@ code {
 }
 .register-p{
   padding-top: 6px;
-  color: white;
+  color: blue;
   padding-left: 10px!important;
 }
 .website-info{
@@ -151,8 +146,6 @@ code {
   padding: 0px 10px;
 }
 .social-media{
-  display: flex;
-  justify-content: space-between;
   width: 40%;
 }
 .social-i{
@@ -169,13 +162,9 @@ code {
 .more-dropdown{
   height: 28px!important;
   border-radius: 0px!important;
-  display: flex!important;
-  justify-content: space-between!important;
   padding: 6px 15px 4px 7px!important;
   margin-right: 7px;
-  text-transform: capitalize!important;
 }
-
 .facebook-btn{
   background-color: #3b5998!important;
 }
@@ -194,7 +183,6 @@ code {
 .telegram-btn{
   background-color: #2881D1!important;
 }
-
 .more-dropdown{
   background-color: #993E05!important;
   width: 20%;
@@ -202,33 +190,27 @@ code {
   padding: 0px!important;
 }
 .more-toggle{
-  display: flex!important;
   height: inherit!important;
   padding: 7px!important;
-  text-transform: capitalize!important;
-  justify-content: space-between!important;
   background-color: inherit!important;
   outline: none!important;
   border-radius: 0px!important;
-  color: white!important;
 }
 .more-toggle p span{
   margin-right: 12px;
 }
 .print, .gmail, .linkedin, .email-app,
 .tumblr, .messenger, .more-item{
-  display: flex!important;
   width: 100%!important;
   height: 27px!important;
-  justify-content: space-between!important;
   padding-right: 65%!important;
   cursor: default!important;
   padding: 7px 62% 6px 15px!important;
   width: 50%;
   background-color: white!important;
 }
-.print, .gmail, .linkedin, .email-app,
-.tumblr, .messenger .more-dropdown, .more-item:hover{
+.print:hover, .gmail:hover, .linkedin:hover, .email-app:hover,
+.tumblr:hover, .messenger:hover .more-dropdown:hover, .more-item:hover{
   background-color: #2881D1!important;
   color: white!important;
 }
@@ -237,53 +219,41 @@ code {
   color: blue!important;
   font-size: 14px;
 }
-.more-item p,.print p, .gmail p, .linkedin p, .email-app p,
-.tumblr p, .messenger p:hover{
+.more-item p:hover,.print p:hover, .gmail p:hover, .linkedin p:hover, .email-app p:hover,
+.tumblr p:hover, .messenger p:hover{
   color: white;
+}
+.print .social-item-i, .gmail .social-item-i,.linkedin .social-item-i, 
+.email-app .social-item-i, .tumblr .social-item-i, .messenger .social-item-i{
+  font-size: 15px;
+  padding: 3px;
 }
 .print .social-item-i{
   background-color: grey;
-  font-size: 15px;
-  padding: 3px;
 }
 .gmail .social-item-i{
   background-color: red;
-  font-size: 15px;
-  padding: 3px;
 }
 .linkedin .social-item-i{
   background-color: #2881D1;
-  font-size: 15px;
-  padding: 3px;
 }
 .email-app .social-item-i{
   background-color: grey;
-  font-size: 15px;
-  padding: 3px;
-}
-.tumblr .social-item-i{
-  font-size: 15px;
-  padding: 3px;
 }
 .messenger .social-item-i{
   background-color: #2881D1;
-  font-size: 15px;
-  padding: 3px;
 }
 .add-this{
   margin-top: 7px;
-  border-top: 1px solid lightgrey;
-  display: flex;
-  justify-content: space-between;
-  padding-left: 56%;
+  border-top: 1px solid lightgrey!important;
+  padding-left: 56%!important;
   height: 30px;
 }
 .add-this-i{
   font-size: 8px;
-  font-weight: bold;
+  font-weight: 900;
   background-color: #993E05;
   padding: 4px;
-  color: white;
   margin-top: 4px;
   margin-right: 4px;
   
@@ -308,12 +278,72 @@ code {
   font-weight: bold;
   background-color: #993E05;
   padding: 4px;
-  color: white;
   margin-right: 9px;
 }
 .more-item p{
   font-size: 14px;
 }
+/* start of header login modal */
+.login{
+  background-color: rgb(41, 39, 39);
+  border-bottom: none!important;
+  border-radius: 7px;
+}
+.exit-i{
+  /* padding-left: 95%; */
+  font-size: 17px;
+  color: rgb(79 79 79);
+  margin-left: 97%;
+  cursor: pointer;
+}
+.exit-i:hover{
+  color: white;
+}
+.login-title span{
+  padding-left: 15px;
+  color: rgb(79 79 79);
+}
+.form-group1{
+  padding-bottom: 24px;
+}
+.form-label{
+  color: rgb(79, 79, 79)!important;
+}
+.form-input{
+  height: 50px;
+  color: rgb(79,79,79);
+}
+.forgot-password{
+  font-size: 11px;
+  margin-left: 74%;
+  color: deepskyblue;
+}
+.remember-div{
+  padding-top: 21px;
+  color: rgb(79,79,79);
+  border: none;
+  padding-bottom: 36px;
+}
+.remember-div input, .remember-div label{
+  cursor: default!important;
+}
+.login-modal-btn{
+  height: 54px;
+  width: 100%;
+  background-color: dodgerblue;
+  text-transform: capitalize;
+  font-size: 21px;
+}
+.login-footer{
+  border: none!important;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  width: 57%;
+  margin-left: 21%;
+}
+/* end of header login modal */
+
 /* end of header styles */
 
 /* start of footer styles  */
@@ -324,11 +354,11 @@ code {
 .footer-info{
   width: 54%;
 }
-.footer-info-div{
-  text-align: left;
-}
 .logo-div{
   margin-bottom: 20px;
+  text-align: left;
+}
+.footer-info-div{
   text-align: left;
 }
 .info-p1{
@@ -336,9 +366,7 @@ code {
 }
 .twitter-a{
   margin-bottom: 20px;
-  display: flex;
   color: rgb(79,79,79);
-  justify-content: space-between;
   width: 27%;
   font-size: 14px;
 }
@@ -347,12 +375,9 @@ code {
 }
 .info-p2{
   font-size: 12px;
-  font-style: italic;
 }
 .footer-links{
   width: 45%;
-    display: flex;
-    justify-content: space-between;
 }
 .links-group1, .links-group2, .links-group3{
   border-radius: 0px!important;
@@ -407,7 +432,6 @@ code {
 }
 .show-name{
   font-size: 16px;
-  color: white;
   background-color: transparent;
   margin-bottom: 5px
 }
@@ -435,4 +459,51 @@ code {
   text-align: center;
   margin-left: 25%;
 }
+
 /* end of card styles */
+/* start of main styles */
+.main{
+  padding: 20px;
+}
+.heading{
+  width: 44%;
+}
+.recommended, .latest-movies, .latest-tv, .requested{
+  padding-bottom: 20px;
+}
+.heading h2, .latest-movies h2, .latest-tv h2, .requested h2 {
+  color: rgb(79 79 79)!important;
+  font-size: 26px;
+}
+.movies-btn, .shows-btn, .trending-btn{
+  height: 33px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+}
+.movies-btn:hover, .shows-btn:hover, .trending-btn:hover{
+  color: grey;
+}
+.movies-btn{
+  background-color: blue;
+}
+.btn-i{
+  padding-right: 7px;
+}
+.heading h2 span, .latest-movies h2 span, 
+.latest-tv h2 span, .requested h2 span{
+  border-bottom: 1px solid grey;
+  padding-bottom: 5px;
+}
+.view-btn{
+  background-color: inherit;
+  border: none;
+  color: cornflowerblue;
+}
+.view-btn:hover{
+  color: grey;
+}
+.viewbtn-i{
+  padding-left: 5px;
+}
+/* end of main styles */

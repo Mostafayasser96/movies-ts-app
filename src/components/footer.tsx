@@ -6,6 +6,9 @@ import { ListGroup } from 'react-bootstrap';
 
 
 const Footer = () => {
+	const links1: string[] = ['Links', 'Movies', 'TV-Shows', 'Most Watched', 'Top IMDb'];
+	const links2: string[] = ['Action Movies', 'Horror Movies', 'Sci-fi Movies', 'Thriller Movies'];
+	const links3: string[] = ['Contact', 'Request'];
 	return (
 		<div className='footer d-flex space-between'>
 			<div className='footer-info'>
@@ -21,31 +24,33 @@ const Footer = () => {
 						required&#46; With a big database and great features&#44; we&#96;re confident FMovies is the best free movies
 						online website in the space that you can&#96;t simply miss&#33;
 					</p>
-					<a href='https://twitter.com/fmoviesdotto' className='twitter-a'>
+					<a href='https://twitter.com/fmoviesdotto' className='twitter-a d-flex justify-content-between'>
 						<FontAwesomeIcon icon={faTwitter} className='footer-social-i' />
 						<span>Connect with us on twitter</span>
 					</a>
-					<p className='info-p2'>This site does not store any files on our server&#44; we only linked to the media which is hosted
+					<p className='info-p2 font-italic'>This site does not store any files on our server&#44; we only linked to the media which is hosted
 						on 3rd party services.</p>
 				</div>
 			</div>
-			<div className='footer-links'>
+			<div className='footer-links d-flex justify-content-between'>
 				<ListGroup className='links-group1'>
-					<ListGroup.Item className='link1'>Links</ListGroup.Item>
-					<ListGroup.Item className='link1'>Movies</ListGroup.Item>
-					<ListGroup.Item className='link1'>TV-Shows</ListGroup.Item>
-					<ListGroup.Item className='link1'>Most Watched</ListGroup.Item>
-					<ListGroup.Item className='link1'>Top IMDb</ListGroup.Item>
+
+					{links1.map((link) =>
+						<ListGroup.Item className='link1'>{link}</ListGroup.Item>
+					)}
+
 				</ListGroup>
 				<ListGroup className='links-group2'>
-					<ListGroup.Item className='link2'>Action Movies</ListGroup.Item>
-					<ListGroup.Item className='link2'>Horror Movies</ListGroup.Item>
-					<ListGroup.Item className='link2'>Sci-fi Movies</ListGroup.Item>
-					<ListGroup.Item className='link2'>Thriller Movies</ListGroup.Item>
+
+					{links2.map((link) => 
+						 <ListGroup.Item className='link2'>{link}</ListGroup.Item>
+					)}
 				</ListGroup>
 				<ListGroup className='links-group3'>
-					<ListGroup.Item className='link3'>Contact</ListGroup.Item>
-					<ListGroup.Item className='link3'>Request</ListGroup.Item>
+
+					{links3.map((link) => 
+						<ListGroup.Item className='link3'>{link}</ListGroup.Item>
+					)}
 				</ListGroup>
 			</div>
 		</div>

@@ -5,6 +5,8 @@ import React from 'react';
 
 
 const MyCard = () => {
+	// the modal const of the card
+    
 	return (
 		<div className='card'>
 			<div className='card-img-div'>
@@ -18,7 +20,7 @@ const MyCard = () => {
 				CAM
 			</div>
 			<div className='card-info'>
-				<p className='show-name'>
+				<p className='show-name text-white'>
 					The Batman
 				</p>
 				<div className='show-info d-flex space-between'>

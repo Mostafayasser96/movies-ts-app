@@ -1,5 +1,6 @@
 // the fetch order: fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
-import React from 'react';
+import React, { useState } from 'react';
+import Login from './login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import { MDBIcon, MDBContainer, MDBBtn } from 'mdbreact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -43,13 +44,30 @@ import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
 // import * as ReactBootstrap from "react-bootstrap";
 
 const Header = () => {
+	// syntax to get the two missed icons(not working).
 	const messengerLookup: IconLookup = { prefix: 'fad', iconName: 'facebook-messenger' };
 	const messengerIconDefinition: IconDefinition = findIconDefinition(messengerLookup);
 	const gmailLookup: IconLookup = { prefix: 'fad', iconName: 'google-plus' };
 	const gmailIconDefinition: IconDefinition = findIconDefinition(gmailLookup);
+	// refactoring genres and countries array elements.
+	const genres: string[] = ['Action', 'Biography', 'Crime', 'Family', 'History', 'Music', 'Romance',
+		'Thriller', 'Western', 'Adventures', 'Costumes', 'Documentary', 'Fantasy',
+		'Horror', 'Mystery', 'Sci-Fi', 'TV show', 'Animation', 'Comedy', 'Drama',
+		'Kungfu', 'Reality TV', 'Sport', 'War'
+	];
+	const countries: string[] = [
+		'Argentina', 'Pelgium', 'Finland', 'Hong Kong', 'International', 'Italy', 'Mexico', 'Norway',
+		'Romania', 'South Korea', 'Swizerland', 'United Kingdom', 'Australia', 'Brazil', 'Czech Republic',
+		'France', 'Hungary', 'Ireland', 'Japan', 'Netherlands', 'Philippines', 'Russia', 'Spain', 'Taiwan',
+		'United States', 'Austria', 'Canada', 'Germany', 'Denmark', 'India', 'Palestine', 'Luxembourg',
+		'New Zealand', 'Poland', 'South Africa', 'Sweden', 'Thailand', 'Egypt'
+	]
+    // login modal const
+	const [showModal, setShow] = useState<boolean>(false);
+
 	return (
 		<div className='header'>
-			<Navbar className='parent-nav'>
+			<Navbar className='parent-nav z-index-999 width-60% height-5% border-radius-20'>
 
 				{/* Note: 1- to avoid conflict of href between Navbar.Brand and react router's Link element path attribute
 						  we will use the hook called 'useHistory' of react, relating it to the onClick attribute 
@@ -71,83 +89,24 @@ const Header = () => {
 								 my apicall(each href has to be changed).
 							  3- turn that navDropdown.Item elements into array values and map over it.
 							*/}
-
-					<NavDropdown title='Genre' id='basic-nav-dropdown' className='genres-dropdown'>
-						<NavDropdown.Item href='#' className='genre'>Action</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Biography</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Crime</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Family</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>History</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Music</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Romance</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Thriller</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Western</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Adventures</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Costumes</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Documentary</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Fantasy</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Horror</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Mystery</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Sci-Fi</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>TV Show</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Animation</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Comedy</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Drama</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Kungfu</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Reality TV</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>Sport</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='genre'>War</NavDropdown.Item>
+					<NavDropdown title='genres' id='basic-nav-dropdown' className='genres-dropdown'>
+						{genres.map((genre) => 
+                  <NavDropdown.Item href='#' className='genre'>{genre}</NavDropdown.Item>
+							)}
 					</NavDropdown>
 					<NavDropdown title='Country' id='basic-nav-dropdown' className='country-dropdown'>
-						<NavDropdown.Item href='#' className='country'>Argentina</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Belgium</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>China</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Finland</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Hong Kong</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>International</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Italy</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Mexico</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Norway</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Romania</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>South Korea</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Swizerland</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>United Kingdom</NavDropdown.Item>
+					  {countries.map((country) => 
+                <NavDropdown.Item href='#' className='country'>{country}</NavDropdown.Item>
+						)}
 
-						<NavDropdown.Item href='#' className='country'>Australia</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Brazil</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Czech Republic</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>France</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Hungary</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Ireland</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Japan</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Japan</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Netherlands</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Philippines</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Russia</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Spain</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Taiwan</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>United States</NavDropdown.Item>
 
-						<NavDropdown.Item href='#' className='country'>Austria</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Canada</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Denmark</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Germany</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>India</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Palestine</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Luxembourg</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>New Zealand</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Poland</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>South Africa</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Sweden</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Thailand</NavDropdown.Item>
-						<NavDropdown.Item href='#' className='country'>Egypt</NavDropdown.Item>
 					</NavDropdown>
 					<Nav.Link href='#' className='inner-nav-link'>Movies</Nav.Link>
 					<Nav.Link href='#' className='inner-nav-link'>TV&#45;Series</Nav.Link>
 					<Nav.Link href='#' className='inner-nav-link'>Top IMDb</Nav.Link>
 				</Nav>
 
-				<Form className='navbar-form'>
+				<Form className='navbar-form d-inline-flex'>
 					<Button type='submit' className='search-btn'>
 						<FontAwesomeIcon icon={faSearch} className='search-i' />
 					</Button>
@@ -157,20 +116,21 @@ const Header = () => {
 						className='search-input'
 					/>
 				</Form>
-				<Nav className='register'>
+				<Nav className='register d-flex justify-content-between'>
 					<NavItem className='profile'>
 						<FontAwesomeIcon icon={faUser} className='profile-i' />
 					</NavItem>
 
-					<NavItem className='register-p'>
-						Login&sol;Register
+					<NavItem className='register-p' onClick={() => setShow(true)}>
+						Login/Register
+						<Login show={showModal} onHide={() => setShow(false)} />
 					</NavItem>
 				</Nav>
 
 			</Navbar>
 
-			
-			<div className='website-info'>
+
+			<div className='website-info text-left'>
 				<h3 className='info-h'>
 					Watch Movies Online Free
 				</h3>
@@ -183,69 +143,69 @@ const Header = () => {
 					Please bookmark <strong className='p-strong-3'>fmovies&#46;name</strong> to update about fmovies domains&#46;
 					Please help us by sharing this site with your friends&#46; Thanks&#33;
 				</p>
-				<div className='social-media'>
-					<Button className='facebook-btn d-flex space-between'>
+				<div className='social-media d-flex justify-content-between'>
+					<Button className='facebook-btn d-flex justify-content-between bg-#3b5998  text-capitalize'>
 						<FontAwesomeIcon icon={faFacebook} className='social-i' />
 						<p>Facebook</p>
 					</Button>
-					<Button className='twitter-btn'>
+					<Button className='twitter-btn d-flex justify-content-between text-capitalize'>
 						<FontAwesomeIcon icon={faTwitter} className='social-i' />
 						<p> Twitter</p>
 					</Button>
-					<Button className='email-btn'>
+					<Button className='email-btn d-flex justify-content-between  text-capitalize'>
 						<FontAwesomeIcon icon={faEnvelope} className='social-i' />
 						<p>Email</p>
 					</Button>
-					<Button className='pinterest-btn'>
+					<Button className='pinterest-btn d-flex justify-content-between  text-capitalize'>
 						<FontAwesomeIcon icon={faPinterest} className='social-i' />
 						<p>Pinterest</p>
 					</Button>
-					<Button className='whatsapp-btn'>
+					<Button className='whatsapp-btn d-flex justify-content-between  text-capitalize'>
 						<FontAwesomeIcon icon={faWhatsapp} className='social-i' />
 						<p> Whatsapp</p>
 					</Button>
-					<Button className='telegram-btn'>
+					<Button className='telegram-btn d-flex justify-content-between  text-capitalize'>
 						<FontAwesomeIcon icon={faPaperPlane} className='social-i' />
 						<p>Telegram</p>
 					</Button>
-					<Dropdown title='More' id='more' className='more-dropdown'>
-						<DropdownToggle className='more-toggle'>
+					<Dropdown title='More' id='more' className='more-dropdown p-0'>
+						<DropdownToggle className='more-toggle d-flex justify-content-between text-capitalize text-white'>
 							<FontAwesomeIcon icon={faPlus} className='social-i' />
 							<p><span>More </span>92.1k</p>
 						</DropdownToggle>
 
 						<DropdownMenu className='more-menu'>
-							<DropdownItem href='#' className='print'>
+							<DropdownItem href='#' className='print d-flex justify-content-between '>
 								<FontAwesomeIcon icon={faPrint} className='social-item-i' />
 								<p>Print</p>
 							</DropdownItem>
-							<DropdownItem href='#' className='gmail'>
+							<DropdownItem href='#' className='gmail d-flex justify-content-between'>
 								<FontAwesomeIcon icon={['fab', 'google-drive']} className='social-item-i' />
 								<p>Gmail</p>
 							</DropdownItem>
-							<DropdownItem href='#' className='linkedin'>
+							<DropdownItem href='#' className='linkedin d-flex justify-content-between'>
 								<FontAwesomeIcon icon={faLinkedin} className='social-item-i' />
 								<p> Linkedin</p>
 							</DropdownItem>
-							<DropdownItem href='#' className='email-app'>
+							<DropdownItem href='#' className='email-app d-flex justify-content-between'>
 								<FontAwesomeIcon icon={faEnvelopeOpenText} className='social-item-i' />
 								<p>Email App</p>
 							</DropdownItem>
-							<DropdownItem href='#' className='tumblr'>
+							<DropdownItem href='#' className='tumblr d-flex justify-content-between'>
 								<FontAwesomeIcon icon={faTumblrSquare} className='social-item-i' />
 								<p>Tumblr</p>
 							</DropdownItem>
-							<DropdownItem href='#' className='messenger'>
+							<DropdownItem href='#' className='messenger d-flex justify-content-between'>
 								<FontAwesomeIcon icon={['fab', 'facebook-messenger']} className='social-item-i' />
 								<p>Messenger</p>
 							</DropdownItem>
 							{/* Note: There is a modal that appears when clicking on more-item */}
-							<DropdownItem href='#' className='more-item'>
-								<FontAwesomeIcon icon={faPlus} className='more-item-i' />
+							<DropdownItem href='#' className='more-item d-flex justify-content-between'>
+								<FontAwesomeIcon icon={faPlus} className='more-item-i text-white' />
 								<p>More...&#40;181&#41;</p>
 							</DropdownItem>
-							<DropdownItem href='#' className='add-this'>
-								<FontAwesomeIcon icon={faPlus} className='add-this-i' />
+							<DropdownItem href='#' className='add-this d-flex justify-content-between'>
+								<FontAwesomeIcon icon={faPlus} className='add-this-i text-white' />
 								<p>Add This</p>
 							</DropdownItem>
 						</DropdownMenu>
