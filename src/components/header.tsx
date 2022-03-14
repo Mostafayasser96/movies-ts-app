@@ -11,7 +11,9 @@ import {
 	faPlus,
 	faPaperPlane,
 	faEnvelopeOpenText,
-	faPrint
+	faPrint,
+	faCircleXmark,
+	faMagnifyingGlass
 } from '@fortawesome/free-solid-svg-icons';
 import {
 	Form,
@@ -22,6 +24,8 @@ import {
 	Button,
 	NavItem,
 	Dropdown,
+	Modal,
+	ButtonGroup,
 
 } from 'react-bootstrap';
 import {
@@ -31,6 +35,10 @@ import {
 	faWhatsapp,
 	faLinkedin,
 	faTumblrSquare,
+	faPinterestP,
+	faFacebookF,
+	faLinkedinIn,
+	faTumblr,
 
 } from "@fortawesome/free-brands-svg-icons";
 import {
@@ -62,9 +70,136 @@ const Header = () => {
 		'United States', 'Austria', 'Canada', 'Germany', 'Denmark', 'India', 'Palestine', 'Luxembourg',
 		'New Zealand', 'Poland', 'South Africa', 'Sweden', 'Thailand', 'Egypt'
 	]
-    // login modal const
+	// login modal const
 	const [showModal, setShow] = useState<boolean>(false);
+	// More button's modal
+	const [showSocialModal, setShowSocialModal] = useState<boolean>(false);
+	function MoreSocialModal(props: { show: boolean; onHide: () => void }) {
+		return (
+			<Modal {...props}
+				onHide={() => setShowSocialModal(false)}
+				aria-labelledby='contained-modal-title-vcenter'
+				fullscreen
+				centered
 
+			>
+				<Modal.Header className='more-social-modal-header'>
+					<Modal.Title>
+						<FontAwesomeIcon icon={faCircleXmark}
+							className='social-modal-exit-i'
+							onClick={() => setShowSocialModal(false)}
+						/>
+					</Modal.Title>
+					<Modal.Body>
+						<h1 className='social-h1 text-white'>Share</h1>
+						<p className='social-p text-white'>FMovies | Watch Movies Online Free on FMovies.to</p>
+						<span className='social-url'>https://fmovies.name</span>
+						<Form className='social-modal-form d-inline-flex'>
+
+							<FormControl type='search'
+								placeholder='Find a Service'
+								aria-label='search'
+								className='social-search-input text-white'
+							/>
+							<Button type='submit' className='social-search-btn'>
+								<FontAwesomeIcon icon={faSearch} className='social-search-i' />
+							</Button>
+						</Form>
+						<p className='btn-group-p'>top services</p>
+						<div className='btn-groups'>
+							<ButtonGroup aria-label='basic-example'
+								className='social-btn-group1 d-flex justify-content-between'>
+								<div className='modal-btn-div'>
+									<Button className='pinterest-modal-btn d-block text-capitalize'>
+									<FontAwesomeIcon icon={faPinterestP} className='modal-social-i' />
+									</Button>
+									<p className='text-white'>Pinterest</p>
+								</div>
+
+
+								<div className='modal-btn-div'>
+									<Button className='facebook-modal-btn d-block bg-#3b5998  text-capitalize'>
+									<FontAwesomeIcon icon={faFacebookF} className='modal-social-i' />
+
+									</Button>
+									<p className='text-white'>Facebook</p>
+								</div>
+
+								<div className='modal-btn-div'>
+									<Button className='twitter-modal-btn d-block text-capitalize'>
+										<FontAwesomeIcon icon={faTwitter} className='modal-social-i' />
+
+									</Button>
+									<p className='text-white'> Twitter</p>
+								</div>
+
+								<div className='modal-btn-div'>
+									<Button href='#' className='print-modal-btn d-block '>
+										<FontAwesomeIcon icon={faPrint} className='modal-social-i' />
+									</Button>
+									<p className='text-white'>Print</p>
+								</div>
+
+								<div className='modal-btn-div'>
+									<Button className='email-modal-btn d-flex justify-content-between  text-capitalize'>
+										<FontAwesomeIcon icon={faEnvelope} className='modal-social-i' />
+
+									</Button>
+									<p className='text-white'>Email</p>
+								</div>
+
+
+							</ButtonGroup>
+							<ButtonGroup aria-label='basic-example'
+								className='social-btn-group2 d-flex justify-content-between'>
+								<div className='modal-btn-div'>
+									<Button href='#' className='gmail-modal-btn d-flex justify-content-between'>
+										{/* note: the gmail icon here isn't working, use the fonts folder to solve that */}
+										<FontAwesomeIcon icon={['fab', 'google-drive']} className='modal-social-i' />
+									</Button>
+									<p className='text-white'>Gmail</p>
+								</div>
+								<div className='modal-btn-div'>
+									<Button href='#' className='linkedin-modal-btn d-flex justify-content-between'>
+									<FontAwesomeIcon icon={faLinkedinIn} className='modal-social-i'/>
+									</Button>
+									<p className='text-white'> Linkedin</p>
+								</div>
+								<div className='modal-btn-div'>
+									<Button href='#' className='email-app-modal-btn d-flex justify-content-between'>
+										<FontAwesomeIcon icon={faEnvelopeOpenText} className='modal-social-i' />
+									</Button>
+									<p className='text-white'>Email App</p>
+								</div>
+								<div className='modal-btn-div'>
+									<Button href='#' className='tumblr-modal-btn d-flex justify-content-between'>
+									<FontAwesomeIcon icon={faTumblr} className='modal-social-i' />
+									</Button>
+									<p className='text-white'>Tumblr</p>
+								</div>
+								<div className='modal-btn-div'>
+									<Button href='#' className='messenger-modal-btn d-flex justify-content-between'>
+										<FontAwesomeIcon icon={['fab', 'facebook-messenger']} className='modal-social-i' />
+									</Button>
+									<p className='text-white'>Messenger</p>
+								</div>
+							</ButtonGroup>
+						</div>
+						<Button className='load-more-btn text-black' type='submit'>
+							load more
+						</Button>
+					</Modal.Body>
+					<Modal.Footer className='social-modal-footer'>
+						<div className='modal-add-this d-flex justify-content-between'>
+							<FontAwesomeIcon icon={faPlus} className='modal-add-this-i text-white' />
+							<p className='text-white'>Add This</p>
+						</div>
+					</Modal.Footer>
+				</Modal.Header>
+
+			</Modal>
+		)
+	}
 	return (
 		<div className='header'>
 			<Navbar className='parent-nav z-index-999 width-60% height-5% border-radius-20'>
@@ -90,13 +225,13 @@ const Header = () => {
 							  3- turn that navDropdown.Item elements into array values and map over it.
 							*/}
 					<NavDropdown title='genres' id='basic-nav-dropdown' className='genres-dropdown'>
-						{genres.map((genre) => 
-                  <NavDropdown.Item href='#' className='genre'>{genre}</NavDropdown.Item>
-							)}
+						{genres.map((genre) =>
+							<NavDropdown.Item href='#' className='genre'>{genre}</NavDropdown.Item>
+						)}
 					</NavDropdown>
 					<NavDropdown title='Country' id='basic-nav-dropdown' className='country-dropdown'>
-					  {countries.map((country) => 
-                <NavDropdown.Item href='#' className='country'>{country}</NavDropdown.Item>
+						{countries.map((country) =>
+							<NavDropdown.Item href='#' className='country'>{country}</NavDropdown.Item>
 						)}
 
 
@@ -168,7 +303,12 @@ const Header = () => {
 						<FontAwesomeIcon icon={faPaperPlane} className='social-i' />
 						<p>Telegram</p>
 					</Button>
-					<Dropdown title='More' id='more' className='more-dropdown p-0'>
+					<Dropdown title='More'
+						id='more'
+						className='more-dropdown p-0'
+					// onClick={() => setShowSocialModal(true)}
+					>
+						<MoreSocialModal show={showSocialModal} onHide={() => setShowSocialModal(true)} />
 						<DropdownToggle className='more-toggle d-flex justify-content-between text-capitalize text-white'>
 							<FontAwesomeIcon icon={faPlus} className='social-i' />
 							<p><span>More </span>92.1k</p>
@@ -200,7 +340,10 @@ const Header = () => {
 								<p>Messenger</p>
 							</DropdownItem>
 							{/* Note: There is a modal that appears when clicking on more-item */}
-							<DropdownItem href='#' className='more-item d-flex justify-content-between'>
+							<DropdownItem href='#'
+								className='more-item d-flex justify-content-between'
+								onClick={() => setShowSocialModal(true)}
+							>
 								<FontAwesomeIcon icon={faPlus} className='more-item-i text-white' />
 								<p>More...&#40;181&#41;</p>
 							</DropdownItem>

@@ -46,6 +46,7 @@ function Login(props: { show: boolean; onHide: () => void }) {
 		<Modal centered
 			aria-labelledby='contained-modal-title-vcenter'
 			{...props}
+			
 		>
 			<ModalHeader className="login d-block" >
 				<Modal.Title id='contained-modal-title-vcenter' className="login-title">
