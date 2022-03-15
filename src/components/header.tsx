@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Login from './login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import { MDBIcon, MDBContainer, MDBBtn } from 'mdbreact';
+import MyCarousel from './carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faSearch,
@@ -155,7 +156,7 @@ const Header = () => {
 								<div className='modal-btn-div'>
 									<Button href='#' className='gmail-modal-btn d-flex justify-content-between'>
 										{/* note: the gmail icon here isn't working, use the fonts folder to solve that */}
-										<FontAwesomeIcon icon={['fab', 'google-drive']} className='modal-social-i' />
+										<i className="modal-social-i fa-brands fa-google-drive" ></i>
 									</Button>
 									<p className='text-white'>Gmail</p>
 								</div>
@@ -179,7 +180,7 @@ const Header = () => {
 								</div>
 								<div className='modal-btn-div'>
 									<Button href='#' className='messenger-modal-btn d-flex justify-content-between'>
-										<FontAwesomeIcon icon={['fab', 'facebook-messenger']} className='modal-social-i' />
+									<i className="modal-social-i fa-brands fa-facebook-messenger"></i>
 									</Button>
 									<p className='text-white'>Messenger</p>
 								</div>
@@ -263,8 +264,8 @@ const Header = () => {
 				</Nav>
 
 			</Navbar>
-
-
+            <MyCarousel />
+            
 			<div className='website-info text-left'>
 				<h3 className='info-h'>
 					Watch Movies Online Free

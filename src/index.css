@@ -12,14 +12,7 @@ code {
     monospace;
 }
 /* header styles */
-.carousel{
-  height: 640px;
-  background-color: red;
-  width: 100%;
-  position: absolute!important;
-  top: 0px;
-  margin-bottom: 200px;
-}
+
 .parent-nav{
   padding: 23px 20px 15px 20px;
   z-index: 999; 
@@ -283,6 +276,89 @@ code {
 .more-item p{
   font-size: 14px;
 }
+/* start of carousel styles */
+.carousel{
+  height: 600px;
+  background-color: red;
+  width: 100%;
+  /* position: absolute!important; */
+  top: 0px;
+  margin-bottom: 200px;
+}
+.slider-show-data{
+  position: relative!important;
+  left: 0px!important;
+  width: 100%;
+  margin-top: 15%;
+  text-align: left;
+  margin-left: 2%;
+}
+.slider-h1{
+  text-align: left;
+}
+.slider-sub-data{
+  width: 20%!important;
+  margin-bottom: 15px;
+  margin-right: 79%;
+}
+.slider-quality{
+  background-color: rgb(26, 184, 236)!important;
+  width: 33px;
+  height: 20px!important;
+  border-radius: 4px!important;
+  color: black!important;
+  text-align: center;
+  font-size: 13px;
+  margin-top: 5px;
+}
+.slider-assessment{
+  width: 46px!important;
+  font-size: 14px;
+  padding-top: 3px;
+}
+.slider-assessment-i{
+  margin-top: 4px!important;
+  font-size: 13px;
+}
+.slider-duration{
+  color: rgb(79, 79, 79)!important;
+  font-size: 14px;
+  padding-top: 3px;
+}
+.slider-movie-genre{
+  font-size: 14px;
+  font-weight: 400;
+}
+.slider-p{
+  margin-bottom: 34px;
+  width: 49%;
+  text-align: left;
+}
+.slider-btn-group{
+  width: 25%;
+  margin-right: 75%;
+}
+.slider-btn1, .slider-btn2{
+  width: 43%;
+  margin-right: 20px;
+  text-align: center;
+  font-size: 14px!important;
+  font-weight: 300!important;
+  border-radius: 25px!important;
+  outline: none!important;
+  background-color: yellow!important;
+}
+.slider-btn1{
+  border: 1px solid lightblue!important;
+  color: lightblue!important;
+}
+.slider-btn2{
+  border: 1px solid white!important;
+}
+.btn1-i, .btn2-i{
+  margin-right: 2px;
+}
+/* end of carousel styles */
 /* start of header login modal */
 .login{
   background-color: rgb(41, 39, 39);
@@ -348,7 +424,12 @@ code {
 .more-social-modal-header{
   background-color: rgb(79, 79, 79);
   display: block!important;
+  background: none;
+  position:relative; 
+  z-index:1;
+  overflow:hidden;
 }
+
 .social-modal-exit-i{
   font-size: 30px;
   margin-left: 96%;
@@ -598,6 +679,7 @@ code {
   width: 17%;
   border-radius: 3px;
   outline: none;
+  cursor: pointer;
 }
 .card-img-div{
   height: 80%;
@@ -654,10 +736,128 @@ code {
   margin-left: 25%;
 }
 /* start of card tooltip styles */
-
-
+.tooltip{
+  width: 260px!important;
+  background-color: #2A3642;
+  padding: 15px 18px!important;
+  border-radius: 14px;
+  margin-left: 10px;
+}
+.tooltip-inner{
+  margin-right: 0px!important;
+  display: contents;
+  visibility: visible;
+}
+.movie-name{
+  text-align: left!important;
+  margin-bottom: 13px!important;
+  font-weight: 400!important;
+  /* background-color: #2A3642; */
+}
+.movie-data{
+  padding-bottom: 10px;
+  /* background-color: #2A3642;; */
+}
+.assessment-span{
+  width: 40px!important;
+}
+.assessment-i{
+  margin-top: 2px!important;
+  color: rgb(26, 184, 236);
+}
+.production-year , .duration{
+  color: rgb(79, 79, 79)!important;
+}
+.quality{
+  background-color: rgb(26, 184, 236)!important;
+  width: 33px!important;
+  height: 19px!important;
+  border-radius: 4px!important;
+  color: black!important;
+}
+.abstract{
+  text-align: left!important;
+  color: rgb(79,79,79)!important;
+  margin-bottom: 5px!important;
+  /* background-color: #2A3642; */
+}
+.movie-data2{
+  text-align: left!important;
+  font-size: 12px!important;
+  /* background-color: #2A3642; */
+}
+.stream-btns{
+  /* background-color: #2A3642; */
+}
+.country-p{
+  margin-bottom: 0px!important;
+  color: rgb(79,79,79)!important;
+}
+.country{
+  color: rgb(79,79,79)!important;
+}
+.country:hover{
+  color: white!important;
+}
+.genre-p{
+  color: rgb(79,79,79)!important;
+}
+.genre{
+  color: rgb(79,79,79)!important;
+}
+.genre:hover{
+  color: white!important;
+}
+.watch-now{
+  width: 75%!important;
+  background-color: grey!important;
+  font-size: 14px!important;
+  text-transform: capitalize!important;
+  font-weight: 400!important;
+}
+.watch-now-i{
+  padding-right: 5px!important;
+  color: rgb(26, 184, 236)!important;
+}
+.love-btn{
+  width: 20%!important;
+  background-color: rgb(179, 39, 39)!important;
+  text-align: center!important;
+  border-radius: 9px!important;
+  padding: 0px!important;
+}
+.love-i{
+  font-size: 22px!important;
+}
 /* end of card tooltip styles  */
-
+/* start of card stream div styles */
+.stream{
+  position: absolute;
+  z-index: 555;
+  height: 100%;
+  width: 100%;
+}
+.stream-shadow{
+  height: 100%;
+  background-color: rgb(79,79,79);
+  opacity: .5;
+  position: relative;
+}
+.stream-overlay{
+  position: absolute;
+  left: 40%;
+  top: 40%;
+  width: 25%;
+  height: 25%;
+  padding-top: 10px;
+  background-color: rgb(26, 184, 236);
+  border-radius: 50%;
+}
+.stream-overlay-i{
+  color: white!important;
+  font-size: 30px;
+}
+/* end of card stream div styles */
 
 /* end of card styles */
 /* start of main styles */
