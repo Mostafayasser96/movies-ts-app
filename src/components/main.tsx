@@ -5,7 +5,8 @@ import {
   faStream,
   faList,
   faChartLine,
-  faCircleChevronRight
+  faCircleChevronRight,
+  faPlay
 } from '@fortawesome/free-solid-svg-icons';
 
 const Main = () => {
@@ -19,7 +20,7 @@ const Main = () => {
          
           <button type='submit' className='movies-btn'>
             {/* note: the icon here isn't the same one as it's not consistent with react fa library */}
-            <FontAwesomeIcon icon={faStream} className='btn-i' />
+            <FontAwesomeIcon icon={faPlay} className='main-stream-overlay-i' />
             Movies
           </button>
           <button type='submit' className='shows-btn'>

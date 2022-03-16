@@ -74,11 +74,11 @@ const MyCard = () => {
     <OverlayTrigger
       placement='right'
       overlay={MyCardTooltip}
-      delay={{ show: 1000, hide: 1000000 }}
+      delay={{ show: 1000, hide: 10000 }}
     >
       <div className='card'
         onMouseEnter={() => setStreamShow(true)}
-        onMouseLeave={() => setStreamShow(true)}
+        onMouseLeave={() => setStreamShow(false)}
       >
         {/* note: the stream div that shows onhover is here */}
         {

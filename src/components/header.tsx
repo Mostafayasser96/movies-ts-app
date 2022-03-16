@@ -1,6 +1,7 @@
 // the fetch order: fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
 import React, { useState } from 'react';
 import Login from './login';
+import Loader from './loader';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import { MDBIcon, MDBContainer, MDBBtn } from 'mdbreact';
 import MyCarousel from './carousel';
@@ -14,7 +15,6 @@ import {
 	faEnvelopeOpenText,
 	faPrint,
 	faCircleXmark,
-	faMagnifyingGlass
 } from '@fortawesome/free-solid-svg-icons';
 import {
 	Form,
@@ -50,6 +50,7 @@ import {
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import DropdownMenu from 'react-bootstrap/esm/DropdownMenu';
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
+
 // import * as ReactBootstrap from "react-bootstrap";
 
 const Header = () => {
@@ -65,7 +66,7 @@ const Header = () => {
 		'Kungfu', 'Reality TV', 'Sport', 'War'
 	];
 	const countries: string[] = [
-		'Argentina', 'Pelgium', 'Finland', 'Hong Kong', 'International', 'Italy', 'Mexico', 'Norway',
+		'Country', 'Argentina', 'Pelgium', 'Finland', 'Hong Kong', 'International', 'Italy', 'Mexico', 'Norway',
 		'Romania', 'South Korea', 'Swizerland', 'United Kingdom', 'Australia', 'Brazil', 'Czech Republic',
 		'France', 'Hungary', 'Ireland', 'Japan', 'Netherlands', 'Philippines', 'Russia', 'Spain', 'Taiwan',
 		'United States', 'Austria', 'Canada', 'Germany', 'Denmark', 'India', 'Palestine', 'Luxembourg',
@@ -75,6 +76,10 @@ const Header = () => {
 	const [showModal, setShow] = useState<boolean>(false);
 	// More button's modal
 	const [showSocialModal, setShowSocialModal] = useState<boolean>(false);
+	// the navbar dropdown states
+	const [dropdown1, setDropdown1] = useState<boolean>(false);
+	const [dropdown2, setDropdown2] = useState<boolean>(false);
+
 	function MoreSocialModal(props: { show: boolean; onHide: () => void }) {
 		return (
 			<Modal {...props}
@@ -112,7 +117,7 @@ const Header = () => {
 								className='social-btn-group1 d-flex justify-content-between'>
 								<div className='modal-btn-div'>
 									<Button className='pinterest-modal-btn d-block text-capitalize'>
-									<FontAwesomeIcon icon={faPinterestP} className='modal-social-i' />
+										<FontAwesomeIcon icon={faPinterestP} className='modal-social-i' />
 									</Button>
 									<p className='text-white'>Pinterest</p>
 								</div>
@@ -120,7 +125,7 @@ const Header = () => {
 
 								<div className='modal-btn-div'>
 									<Button className='facebook-modal-btn d-block bg-#3b5998  text-capitalize'>
-									<FontAwesomeIcon icon={faFacebookF} className='modal-social-i' />
+										<FontAwesomeIcon icon={faFacebookF} className='modal-social-i' />
 
 									</Button>
 									<p className='text-white'>Facebook</p>
@@ -162,7 +167,7 @@ const Header = () => {
 								</div>
 								<div className='modal-btn-div'>
 									<Button href='#' className='linkedin-modal-btn d-flex justify-content-between'>
-									<FontAwesomeIcon icon={faLinkedinIn} className='modal-social-i'/>
+										<FontAwesomeIcon icon={faLinkedinIn} className='modal-social-i' />
 									</Button>
 									<p className='text-white'> Linkedin</p>
 								</div>
@@ -174,13 +179,13 @@ const Header = () => {
 								</div>
 								<div className='modal-btn-div'>
 									<Button href='#' className='tumblr-modal-btn d-flex justify-content-between'>
-									<FontAwesomeIcon icon={faTumblr} className='modal-social-i' />
+										<FontAwesomeIcon icon={faTumblr} className='modal-social-i' />
 									</Button>
 									<p className='text-white'>Tumblr</p>
 								</div>
 								<div className='modal-btn-div'>
 									<Button href='#' className='messenger-modal-btn d-flex justify-content-between'>
-									<i className="modal-social-i fa-brands fa-facebook-messenger"></i>
+										<i className="modal-social-i fa-brands fa-facebook-messenger"></i>
 									</Button>
 									<p className='text-white'>Messenger</p>
 								</div>
@@ -225,18 +230,58 @@ const Header = () => {
 								 my apicall(each href has to be changed).
 							  3- turn that navDropdown.Item elements into array values and map over it.
 							*/}
-					<NavDropdown title='genres' id='basic-nav-dropdown' className='genres-dropdown'>
-						{genres.map((genre) =>
-							<NavDropdown.Item href='#' className='genre'>{genre}</NavDropdown.Item>
-						)}
-					</NavDropdown>
-					<NavDropdown title='Country' id='basic-nav-dropdown' className='country-dropdown'>
-						{countries.map((country) =>
-							<NavDropdown.Item href='#' className='country'>{country}</NavDropdown.Item>
-						)}
+					<select name='genres'
+					        data-dropdown-id="dropdown-ourstory"
+						// id='basic-nav-dropdown'
+						className='genres-dropdown'
+						
+						onMouseOver={() => setDropdown1(true)}
+						onMouseLeave={() => setDropdown1(false)}
+					>
+						<option value=""
+							selected
+							disabled
+							hidden
+						>Genre</option>
+					{dropdown1 &&	<optgroup className='genres-menu' data-dropdown-id="dropdown-ourstory">
+							{genres.map((genre) =>
+								<option
+									className='genre'
+
+								>
+									{genre}
+								</option>
+							)}
+						</optgroup>}
+
+					</select>
+					<select name='Country'
+						value='genres'
+						id='basic-nav-dropdown'
+						className='country-dropdown'
+
+						onMouseEnter={() => setDropdown2(true)}
+						onMouseLeave={() => setDropdown2(false)}
+					>
+						<option value=""
+							selected
+							disabled
+							hidden
+						>Country</option>
+						{dropdown2 && <optgroup className='countries-menu'>
+							{countries.map((country) =>
+								<option
+									className='country'
+
+								>
+									{country}
+								</option>
+							)}
+						</optgroup>}
 
 
-					</NavDropdown>
+
+					</select>
 					<Nav.Link href='#' className='inner-nav-link'>Movies</Nav.Link>
 					<Nav.Link href='#' className='inner-nav-link'>TV&#45;Series</Nav.Link>
 					<Nav.Link href='#' className='inner-nav-link'>Top IMDb</Nav.Link>
@@ -264,8 +309,8 @@ const Header = () => {
 				</Nav>
 
 			</Navbar>
-            <MyCarousel />
-            
+			<MyCarousel />
+
 			<div className='website-info text-left'>
 				<h3 className='info-h'>
 					Watch Movies Online Free
@@ -307,9 +352,9 @@ const Header = () => {
 					<Dropdown title='More'
 						id='more'
 						className='more-dropdown p-0'
-					// onClick={() => setShowSocialModal(true)}
+						onClick={() => setShowSocialModal(true)}
 					>
-						<MoreSocialModal show={showSocialModal} onHide={() => setShowSocialModal(true)} />
+						<MoreSocialModal show={showSocialModal} onHide={() => setShowSocialModal(false)} />
 						<DropdownToggle className='more-toggle d-flex justify-content-between text-capitalize text-white'>
 							<FontAwesomeIcon icon={faPlus} className='social-i' />
 							<p><span>More </span>92.1k</p>
@@ -357,7 +402,7 @@ const Header = () => {
 					</Dropdown>
 				</div>
 			</div>
-
+			{/* <Loader /> */}
 		</div>
 	)
 }

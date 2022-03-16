@@ -39,7 +39,51 @@ code {
   line-height: 22.5px;
 }
 .genres-dropdown, .country-dropdown{
-  display: contents;
+  /* display: contents; */
+  /* position: relative!important; */
+  border: none;
+  width: 90px;
+  color: rgb(79,79,79);
+  padding-top: 0px!important;
+  padding-bottom: 19px;
+  cursor: pointer;
+}
+/* to erase the toggle select appearance */
+.parent-nav select{
+  -webkit-appearance: none;
+}
+/* .genres-menu{
+  display: none!important;
+} */
+.genres:hover .genres-menu{
+  display: block!important;
+}
+.genres-menu{
+  background-color: #2A3642;
+  border-radius: 7px;
+}
+/* .genres-dropdown .dropdown-menu{
+  position: absolute;
+  left: 20%!important;
+  top: 55%!important;
+  width: 430px;
+  height: 345px;
+} */
+/* .genres-dropdown:hover .dropdown-menu{
+  display: block;
+} */
+/* .country-dropdown .dropdown-menu{
+  left: 25%!important;
+  top: 55%!important;
+  width: 430px;
+  height: 345px;
+} */
+.country-dropdown:hover {
+  display: block;
+}
+.genre{
+  display: inline-grid;
+
 }
 .inner-nav-link, .genres-dropdown, .country-dropdown:hover{
   color: rgb(0, 162, 255);
@@ -429,7 +473,11 @@ code {
   z-index:1;
   overflow:hidden;
 }
-
+.modal-dialog{
+  background-color: #FAFAFA!important;
+  opacity: .7;
+  height: 0px;
+}
 .social-modal-exit-i{
   font-size: 30px;
   margin-left: 96%;
@@ -537,6 +585,10 @@ code {
 .email-app-modal-btn .modal-social-i{
   margin-top: 7px;
   margin-left: 9px;
+}
+.messenger-modal-btn .modal-social-i{
+  padding-left: 9px;
+  padding-top: 11px;
 }
 .facebook-modal-btn{
   background-color: #3b5998!important;
@@ -839,9 +891,12 @@ code {
 }
 .stream-shadow{
   height: 100%;
-  background-color: rgb(79,79,79);
-  opacity: .5;
-  position: relative;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0,.5);
+  position: absolute;
+
 }
 .stream-overlay{
   position: absolute;
@@ -857,6 +912,7 @@ code {
   color: white!important;
   font-size: 30px;
 }
+
 /* end of card stream div styles */
 
 /* end of card styles */
@@ -883,6 +939,15 @@ code {
 .movies-btn:hover, .shows-btn:hover, .trending-btn:hover{
   color: grey;
 }
+.main-stream-overlay-i{
+  color: blue!important;
+  font-size: 10px;
+  margin-right: 4px;
+  background-color: white!important;
+  padding: 5px;
+  border-radius: 25px;
+  margin-top: 5px;
+}
 .movies-btn{
   background-color: blue;
 }
@@ -906,3 +971,50 @@ code {
   padding-left: 5px;
 }
 /* end of main styles */
+
+/* start of loader styles */
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background-color: black!important;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.overlay{
+  position: absolute!important;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.5);
+}
+/* end of loader styles */

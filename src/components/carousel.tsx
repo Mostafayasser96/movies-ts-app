@@ -50,7 +50,7 @@ const MyCarousel = () => {
 					</ButtonGroup>
 				</Carousel.Caption>
 			</Carousel.Item>
-			
+			{/* note: the css property called (box-shadow) is very important for carousel styling */}
 		</Carousel>
 	)
 }
