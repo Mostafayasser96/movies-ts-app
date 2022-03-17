@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.css";
+import '../styles/card.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPlay,

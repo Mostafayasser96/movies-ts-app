@@ -1,0 +1,60 @@
+/* start of header login modal */
+.login{
+    background-color: rgb(41, 39, 39);
+    border-bottom: none!important;
+    border-radius: 7px;
+  }
+  .exit-i{
+    /* padding-left: 95%; */
+    font-size: 17px;
+    color: rgb(79 79 79);
+    margin-left: 97%;
+    cursor: pointer;
+  }
+  .exit-i:hover{
+    color: white;
+  }
+  .login-title span{
+    padding-left: 15px;
+    color: rgb(79 79 79);
+  }
+  .form-group1{
+    padding-bottom: 24px;
+  }
+  .form-label{
+    color: rgb(79, 79, 79)!important;
+  }
+  .form-input{
+    height: 50px;
+    color: rgb(79,79,79);
+  }
+  .forgot-password{
+    font-size: 11px;
+    margin-left: 74%;
+    color: deepskyblue;
+  }
+  .remember-div{
+    padding-top: 21px;
+    color: rgb(79,79,79);
+    border: none;
+    padding-bottom: 36px;
+  }
+  .remember-div input, .remember-div label{
+    cursor: default!important;
+  }
+  .login-modal-btn{
+    height: 54px;
+    width: 100%;
+    background-color: dodgerblue;
+    text-transform: capitalize;
+    font-size: 21px;
+  }
+  .login-footer{
+    border: none!important;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    width: 57%;
+    margin-left: 21%;
+  }
+  /* end of header login modal */

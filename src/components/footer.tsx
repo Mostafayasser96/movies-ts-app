@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { ListGroup } from 'react-bootstrap';
-
+import '../styles/footer.css';
 
 const Footer = () => {
 	const links1: string[] = ['Links', 'Movies', 'TV-Shows', 'Most Watched', 'Top IMDb'];
