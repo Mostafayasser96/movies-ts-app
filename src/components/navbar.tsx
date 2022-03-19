@@ -1,4 +1,9 @@
-// the fetch order: fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
+// the fetch order: fetch(https://api.themoviedb.org/3/movie/76341?api_key=<<api_key>>)
+// the second popular fetch order: fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
+// the specific list of movies fetch order: fetch(`https://files.tmdb.org/p/exports/movie_ids_04_28_2017.json.gz`)
+// the specific language used in the fetch order: fetch(`https://api.themoviedb.org/3/movie/76341?api_key=<<api_key>>&language=pt-BR`)
+
+
 import React, { useState } from 'react';
 import Login from './login';
 // import Loader from './loader';
@@ -17,12 +22,16 @@ import {
   Button,
   NavItem,
 } from 'react-bootstrap';
+import {
+  Link,
+  useNavigate
+} from 'react-router-dom';
 // import {
 //   IconLookup,
 //   IconDefinition,
 //   findIconDefinition
 // } from '@fortawesome/fontawesome-svg-core';
-import { Link } from 'react-router-dom';
+
 
 
 const Header = () => {
@@ -32,7 +41,8 @@ const Header = () => {
   // const gmailLookup: IconLookup = { prefix: 'fad', iconName: 'google-plus' };
   // const gmailIconDefinition: IconDefinition = findIconDefinition(gmailLookup);
   // refactoring genres and countries array elements.
-  const genres: string[] = ['Action', 'Biography', 'Crime', 'Family', 'History', 'Music', 'Romance',
+  const genres: string[] = [
+    'Action', 'Biography', 'Crime', 'Family', 'History', 'Music', 'Romance',
     'Thriller', 'Western', 'Adventures', 'Costumes', 'Documentary', 'Fantasy',
     'Horror', 'Mystery', 'Sci-Fi', 'TV show', 'Animation', 'Comedy', 'Drama',
     'Kungfu', 'Reality TV', 'Sport', 'War'
@@ -56,15 +66,29 @@ const Header = () => {
   const [max2] = useState<number>(16);
   const [min3] = useState<number>(17);
   const [max3] = useState<number>(23);
-  
+
   const [min4] = useState<number>(0);
   const [max4] = useState<number>(12);
   const [min5] = useState<number>(13);
   const [max5] = useState<number>(25);
   const [min6] = useState<number>(26);
   const [max6] = useState<number>(38);
-  // handling dropdown states, another approach (using jquery)
-
+  // handling the useHistory hook of navbar pages
+  let navigate = useNavigate();
+  // the api calls
+  const ApiCall = () => {
+    // the apikey
+    const apiKey = process.env.REACT_APP_API_KEY;
+    // api call for all the movies
+    fetch(`http://api.themoviedb.org/3/movie/76341?api_key=${apiKey}`)
+    .then(response => response.json())
+    .then(data => console.log(data));
+    // api call for latest releases in cinemas(for carousel)
+    fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`)
+    .then(response => response.json())
+    .then(data => console.log(data));
+    // 
+  }
   return (
     <div className='header'>
       <Navbar className='parent-nav z-index-999 width-60% height-5% border-radius-20'>
@@ -83,7 +107,9 @@ const Header = () => {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
 
         <Nav className='inner-nav'>
-          <Nav.Link href='#' className='inner-nav-link'>Home</Nav.Link>
+          <Nav.Link className='inner-nav-link' onClick={() => navigate('/') }>
+              Home
+          </Nav.Link>
           {/* Note: 1- NavDropdown.Items appear onhover not onclick here.
 							  2- each NavDropdown.Item element here has href that has to be consistent with
 								 my apicall(each href has to be changed).
@@ -152,35 +178,35 @@ const Header = () => {
             <div className='menu'>
               <div className='menu1'>
                 {dropdown1 &&
-                   genres.map((genre, index) => {
-                     if(index >= min1 && index <= max1){
-                       return(
-                         <div key={index}> {genre} </div>
-                       )
-                     }
-                   })
+                  genres.map((genre, index) => {
+                    if (index >= min1 && index <= max1) {
+                      return (
+                        <div key={index}> {genre} </div>
+                      )
+                    }
+                  })
                 }
               </div>
               <div className='menu2'>
                 {dropdown1 &&
-                   genres.map((genre, index) => {
-                     if(index >= min2 && index <= max2){
-                       return(
-                         <div key={index}> {genre} </div>
-                       )
-                     }
-                   })
+                  genres.map((genre, index) => {
+                    if (index >= min2 && index <= max2) {
+                      return (
+                        <div key={index}> {genre} </div>
+                      )
+                    }
+                  })
                 }
               </div>
               <div className='menu3'>
                 {dropdown1 &&
-                   genres.map((genre, index) => {
-                     if(index >= min3 && index <= max3){
-                       return(
-                         <div key={index}> {genre} </div>
-                       )
-                     }
-                   })
+                  genres.map((genre, index) => {
+                    if (index >= min3 && index <= max3) {
+                      return (
+                        <div key={index}> {genre} </div>
+                      )
+                    }
+                  })
                 }
               </div>
             </div>
@@ -197,35 +223,35 @@ const Header = () => {
             <div className='menu'>
               <div className='menu1'>
                 {dropdown2 &&
-                   countries.map((country, index) => {
-                     if(index >= min4 && index <= max4){
-                       return(
-                         <div key={index}> {country} </div>
-                       )
-                     }
-                   })
+                  countries.map((country, index) => {
+                    if (index >= min4 && index <= max4) {
+                      return (
+                        <div key={index}> {country} </div>
+                      )
+                    }
+                  })
                 }
               </div>
               <div className='menu2'>
                 {dropdown2 &&
-                   countries.map((country, index) => {
-                     if(index >= min5 && index <= max5){
-                       return(
-                         <div key={index}> {country} </div>
-                       )
-                     }
-                   })
+                  countries.map((country, index) => {
+                    if (index >= min5 && index <= max5) {
+                      return (
+                        <div key={index}> {country} </div>
+                      )
+                    }
+                  })
                 }
               </div>
               <div className='menu3'>
                 {dropdown2 &&
-                   countries.map((country, index) => {
-                     if(index >= min6 && index <= max6){
-                       return(
-                         <div key={index}> {country} </div>
-                       )
-                     }
-                   })
+                  countries.map((country, index) => {
+                    if (index >= min6 && index <= max6) {
+                      return (
+                        <div key={index}> {country} </div>
+                      )
+                    }
+                  })
                 }
               </div>
             </div>
@@ -240,14 +266,14 @@ const Header = () => {
 
 
 
-          <Nav.Link className='inner-nav-link'>
-            <Link to='movies'>Movies</Link>
+          <Nav.Link className='inner-nav-link' onClick={() => navigate('/movies')}>
+           Movies
           </Nav.Link>
-          <Nav.Link className='inner-nav-link'>
-            <Link to='Tv-series'>	TV&#45;Series</Link>
+          <Nav.Link className='inner-nav-link' onClick={() => navigate('/Tv-series')}>
+           TV&#45;Series
           </Nav.Link>
-          <Nav.Link className='inner-nav-link'>
-            <Link to='top-imdb'>Top IMDb</Link>
+          <Nav.Link className='inner-nav-link' onClick={() => navigate('/top-imdb')}>
+            Top IMDb
           </Nav.Link>
         </Nav>
 
@@ -273,8 +299,9 @@ const Header = () => {
         </Nav>
 
       </Navbar>
+      {ApiCall()}
     </div>
-
+   
 
   )
 }
