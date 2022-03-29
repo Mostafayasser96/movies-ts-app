@@ -1,30 +1,33 @@
 /* start of card styles */
 .card{
-    background-color: yellow!important;
-    height: 200px;
-    width: 17%;
+    background-color: transparent!important;
+    height: 380px;
+    width: 15%!important;
     border-radius: 3px;
     outline: none;
     cursor: pointer;
+    margin-right: 5px;
+    margin-bottom: 20px;
+    padding: 0px;
   }
   .card-img-div{
-    height: 80%;
     background-color: grey;
+    border-radius: 4px;
   }
   .show-img{
     border-radius: 3px;
     height: inherit;
   }
   .show-quality{
-    width: 18%;
-    height: 22px;
+    width: 13%;
+    height: 19px;
     border: 1px solid gray;
     border-radius: 5px;
     background-color: white;
     position: absolute;
     z-index: 999;
-    right: 1%;
-    top: 3%;
+    right: 8%;
+    top: 2%;
     font-size: 14px;
   }
   .card-info{
@@ -56,10 +59,12 @@
     background-color: white;
     border-radius: 5px;
     border: 1px solid gray;
-    width: 19%;
+    width: 23%;
     font-size: 14px;
     text-align: center;
-    margin-left: 25%;
+    background-color: transparent;
+    color: white;
+    font-weight: 300;
   }
   /* start of card tooltip styles */
   .tooltip{
@@ -160,7 +165,7 @@
   .stream{
     position: absolute;
     z-index: 555;
-    height: 100%;
+    height: 77%;
     width: 100%;
   }
   .stream-shadow{
@@ -174,9 +179,9 @@
   }
   .stream-overlay{
     position: absolute;
-    left: 40%;
+    left: 35%;
     top: 40%;
-    width: 25%;
+    width: 30%;
     height: 25%;
     padding-top: 10px;
     background-color: rgb(26, 184, 236);
@@ -185,8 +190,40 @@
   .stream-overlay-i{
     color: white!important;
     font-size: 30px;
+    padding-top: 15px;
+    padding-left: 3px;
   }
-  
+  .show-img{
+    width: 100%;
+  }
   /* end of card stream div styles */
   
   /* end of card styles */
+
+  /* handling card responsive design */
+  @media (min-width: 0px) and (max-width: 494px){
+    .card{
+      width: 48%!important;
+    }
+  }
+  @media (min-width: 494px) and (max-width: 595px){
+    .card{
+      width: 30%!important;
+    } 
+  }
+  @media (min-width: 595px) and (max-width: 765px){
+    .card{
+      width: 22%!important;
+    } 
+  }
+  @media (min-width: 765px) and (max-width: 1275px){
+    .card{
+      width: 18%!important;
+    } 
+  }
+  @media (min-width: 1275px) and (max-width: 1326px){
+    .card{
+      width: 15%!important;
+    } 
+  }
+  /* end of card responsive design */

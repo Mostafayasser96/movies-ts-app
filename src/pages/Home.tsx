@@ -1,9 +1,11 @@
 import React from "react";
 import MyCarousel from "../components/carousel";
 import Footer from "../components/footer";
+import Info from "../components/info";
 import Loader from "../components/loader";
-import Main from "../components/main";
+import Main from "../components/homepage";
 import Header from "../components/navbar";
+
 
 
 
@@ -15,7 +17,8 @@ const Home = () => {
           <MyCarousel />
           <Main />
           <Footer />
-          {/* <Loader /> */}
+          {/* <Info /> */}
+
         </div>
     )
 }

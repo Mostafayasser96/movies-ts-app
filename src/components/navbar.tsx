@@ -4,7 +4,7 @@
 // the specific language used in the fetch order: fetch(`https://api.themoviedb.org/3/movie/76341?api_key=<<api_key>>&language=pt-BR`)
 
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Login from './login';
 // import Loader from './loader';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -26,21 +26,11 @@ import {
   Link,
   useNavigate
 } from 'react-router-dom';
-// import {
-//   IconLookup,
-//   IconDefinition,
-//   findIconDefinition
-// } from '@fortawesome/fontawesome-svg-core';
+
 
 
 
 const Header = () => {
-  // syntax to get the two missed icons(not working).
-  // const messengerLookup: IconLookup = { prefix: 'fad', iconName: 'facebook-messenger' };
-  // const messengerIconDefinition: IconDefinition = findIconDefinition(messengerLookup);
-  // const gmailLookup: IconLookup = { prefix: 'fad', iconName: 'google-plus' };
-  // const gmailIconDefinition: IconDefinition = findIconDefinition(gmailLookup);
-  // refactoring genres and countries array elements.
   const genres: string[] = [
     'Action', 'Biography', 'Crime', 'Family', 'History', 'Music', 'Romance',
     'Thriller', 'Western', 'Adventures', 'Costumes', 'Documentary', 'Fantasy',
@@ -73,7 +63,7 @@ const Header = () => {
   const [max5] = useState<number>(25);
   const [min6] = useState<number>(26);
   const [max6] = useState<number>(38);
-  // handling the useHistory hook of navbar pages
+  // handling the useNavigate hook of navbar pages
   let navigate = useNavigate();
   // the api calls
   const ApiCall = () => {
@@ -81,17 +71,22 @@ const Header = () => {
     const apiKey = process.env.REACT_APP_API_KEY;
     // api call for all the movies
     fetch(`http://api.themoviedb.org/3/movie/76341?api_key=${apiKey}`)
-    .then(response => response.json())
-    .then(data => console.log(data));
+      .then(response => response.json())
+      .then(data => console.log(data));
     // api call for latest releases in cinemas(for carousel)
     fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`)
-    .then(response => response.json())
-    .then(data => console.log(data));
+      .then(response => response.json())
+      .then(data => console.log(data));
     // 
   }
+
+
   return (
     <div className='header'>
-      <Navbar className='parent-nav z-index-999 width-60% height-5% border-radius-20'>
+      <Navbar className='navbar parent-nav'
+        collapseOnSelect
+        sticky='top'
+      >
 
         {/* Note: 1- to avoid conflict of href between Navbar.Brand and react router's Link element path attribute
 						  we will use the hook called 'useHistory' of react, relating it to the onClick attribute 
@@ -104,177 +99,135 @@ const Header = () => {
             alt='Fmovies logo'
           ></img>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls='basic-navbar-nav' />
+
+
 
         <Nav className='inner-nav'>
-          <Nav.Link className='inner-nav-link' onClick={() => navigate('/') }>
+          <Navbar.Toggle aria-controls='responsive-navbar-nav' 
+                         data-toggle='collapse'
+          />
+          <Navbar.Collapse id='responsive-navbar-nav'
+            className='navbar-collapse'
+          >
+            <Nav.Link className='inner-nav-link' onClick={() => navigate('/')}>
               Home
-          </Nav.Link>
-          {/* Note: 1- NavDropdown.Items appear onhover not onclick here.
-							  2- each NavDropdown.Item element here has href that has to be consistent with
-								 my apicall(each href has to be changed).
-							  3- turn that navDropdown.Item elements into array values and map over it.
-							*/}
-          {/* <Nav.Link className='genres-nav'>
-            <select name='genres'
-              data-dropdown-id="dropdown-ourstory"
-              // id='basic-nav-dropdown'
+            </Nav.Link>
+            <Nav.Link title='Genre'
               className='genres-dropdown'
+              onMouseEnter={() => setDropdown1(true)}
+              onMouseLeave={() => setDropdown1(false)}
+            >
+              Genre
+              <div className='menu'>
+                <div className='menu1'>
+                  {dropdown1 &&
+                    genres.map((genre, index) => {
+                      if (index >= min1 && index <= max1) {
+                        return (
+                          <div key={index}> {genre} </div>
+                        )
+                      }
+                    })
+                  }
+                </div>
+                <div className='menu2'>
+                  {dropdown1 &&
+                    genres.map((genre, index) => {
+                      if (index >= min2 && index <= max2) {
+                        return (
+                          <div key={index}> {genre} </div>
+                        )
+                      }
+                    })
+                  }
+                </div>
+                <div className='menu3'>
+                  {dropdown1 &&
+                    genres.map((genre, index) => {
+                      if (index >= min3 && index <= max3) {
+                        return (
+                          <div key={index}> {genre} </div>
+                        )
+                      }
+                    })
+                  }
+                </div>
+              </div>
+            </Nav.Link>
 
+
+
+            <Nav.Link title='Country'
+              className='countries-dropdown'
+              onMouseEnter={() => setDropdown2(true)}
+              onMouseLeave={() => setDropdown2(false)}
+            >
+              Country
+              <div className='menu'>
+                <div className='menu1'>
+                  {dropdown2 &&
+                    countries.map((country, index) => {
+                      if (index >= min4 && index <= max4) {
+                        return (
+                          <div key={index}> {country} </div>
+                        )
+                      }
+                    })
+                  }
+                </div>
+                <div className='menu2'>
+                  {dropdown2 &&
+                    countries.map((country, index) => {
+                      if (index >= min5 && index <= max5) {
+                        return (
+                          <div key={index}> {country} </div>
+                        )
+                      }
+                    })
+                  }
+                </div>
+                <div className='menu3'>
+                  {dropdown2 &&
+                    countries.map((country, index) => {
+                      if (index >= min6 && index <= max6) {
+                        return (
+                          <div key={index}> {country} </div>
+                        )
+                      }
+                    })
+                  }
+                </div>
+              </div>
+            </Nav.Link>
+
+
+
+
+
+
+
+
+
+
+            <Nav.Link className='inner-nav-link'
+              onClick={() => navigate('/movies')}
 
             >
-              <option value=""
-                selected
-                disabled
-                hidden
-              >Genre</option>
-              <optgroup className='genres-menu' data-dropdown-id="dropdown-ourstory">
-                {genres.map((genre) =>
-                  <option
-                    className='genre'
+              Movies
+            </Nav.Link>
+            <Nav.Link className='inner-nav-link'
+              onClick={() => navigate('/Tv-series')}
 
-                  >
-                    {genre}
-                  </option>
-                )}
-              </optgroup>
+            >
+              TV&#45;Series
+            </Nav.Link>
+            <Nav.Link className='inner-nav-link'
+              onClick={() => navigate('/top-imdb')}
 
-            </select>
-          </Nav.Link>
-
-          <select name='Country'
-            value='genres'
-            id='basic-nav-dropdown'
-            className='country-dropdown'
-
-          >
-            <option value=""
-              selected
-              disabled
-              hidden
-            >Country</option>
-            <optgroup className='countries-menu'>
-              {countries.map((country) =>
-                <option
-                  className='country'
-
-                >
-                  {country}
-                </option>
-              )}
-            </optgroup>
-
-
-
-          </select> */}
-
-
-          <Nav.Link title='Genre'
-            className='genres-dropdown'
-            onMouseEnter={() => setDropdown1(true)}
-            onMouseLeave={() => setDropdown1(false)}
-          >
-            Genre
-            <div className='menu'>
-              <div className='menu1'>
-                {dropdown1 &&
-                  genres.map((genre, index) => {
-                    if (index >= min1 && index <= max1) {
-                      return (
-                        <div key={index}> {genre} </div>
-                      )
-                    }
-                  })
-                }
-              </div>
-              <div className='menu2'>
-                {dropdown1 &&
-                  genres.map((genre, index) => {
-                    if (index >= min2 && index <= max2) {
-                      return (
-                        <div key={index}> {genre} </div>
-                      )
-                    }
-                  })
-                }
-              </div>
-              <div className='menu3'>
-                {dropdown1 &&
-                  genres.map((genre, index) => {
-                    if (index >= min3 && index <= max3) {
-                      return (
-                        <div key={index}> {genre} </div>
-                      )
-                    }
-                  })
-                }
-              </div>
-            </div>
-          </Nav.Link>
-
-
-
-          <Nav.Link title='Country'
-            className='countries-dropdown'
-            onMouseEnter={() => setDropdown2(true)}
-            onMouseLeave={() => setDropdown2(false)}
-          >
-            Country
-            <div className='menu'>
-              <div className='menu1'>
-                {dropdown2 &&
-                  countries.map((country, index) => {
-                    if (index >= min4 && index <= max4) {
-                      return (
-                        <div key={index}> {country} </div>
-                      )
-                    }
-                  })
-                }
-              </div>
-              <div className='menu2'>
-                {dropdown2 &&
-                  countries.map((country, index) => {
-                    if (index >= min5 && index <= max5) {
-                      return (
-                        <div key={index}> {country} </div>
-                      )
-                    }
-                  })
-                }
-              </div>
-              <div className='menu3'>
-                {dropdown2 &&
-                  countries.map((country, index) => {
-                    if (index >= min6 && index <= max6) {
-                      return (
-                        <div key={index}> {country} </div>
-                      )
-                    }
-                  })
-                }
-              </div>
-            </div>
-          </Nav.Link>
-
-
-
-
-
-
-
-
-
-
-          <Nav.Link className='inner-nav-link' onClick={() => navigate('/movies')}>
-           Movies
-          </Nav.Link>
-          <Nav.Link className='inner-nav-link' onClick={() => navigate('/Tv-series')}>
-           TV&#45;Series
-          </Nav.Link>
-          <Nav.Link className='inner-nav-link' onClick={() => navigate('/top-imdb')}>
-            Top IMDb
-          </Nav.Link>
+            >
+              Top IMDb
+            </Nav.Link>
+          </Navbar.Collapse>
         </Nav>
 
         <Form className='navbar-form d-inline-flex'>
@@ -287,7 +240,7 @@ const Header = () => {
             className='search-input'
           />
         </Form>
-        <Nav className='register d-flex justify-content-between'>
+        <Nav className='register'>
           <NavItem className='profile'>
             <FontAwesomeIcon icon={faUser} className='profile-i' />
           </NavItem>
@@ -299,9 +252,8 @@ const Header = () => {
         </Nav>
 
       </Navbar>
-      {ApiCall()}
-    </div>
-   
+    </div >
+
 
   )
 }

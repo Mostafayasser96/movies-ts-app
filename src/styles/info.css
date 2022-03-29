@@ -1,0 +1,113 @@
+.show{
+    background-color: #25313f;
+    padding: 20px;
+}
+.servers{
+    margin-bottom: 35px;
+}
+.servers-p{
+    font-weight: 300
+}
+/* start of button group styles */
+.servers-btn-group{
+    width: 60%;
+    padding-left: 30%;
+}
+.server-btn1{
+    height: 75px;
+    border-radius: 7px;
+    outline: none;
+    margin-right: 3%;
+    background-color: #2881D1!important;
+    align-items: center;
+    border: none;
+}
+.server-btn2, .server-btn3, .server-btn4{
+    height: 75px;
+    border-radius: 7px;
+    outline: none;
+    margin-right: 3%;
+    background-color: #13191f!important;
+    align-items: center;
+    border: none;
+    padding: 12px;
+}
+.server-btn1 .server-i{
+    font-size: 20px;
+    margin-right: 16px;
+    color: #0d1218;
+}
+.server-btn2 .server-i, .server-btn3 .server-i, .server-btn4 .server-i{
+    margin-right: 16px;
+    color: white;
+}
+
+.server-type{
+    display: inline-grid;
+}
+.span1{
+    font-size: 13px;
+    font-weight: 300;
+}
+/* end of button group styles */
+
+/* start of details styles */
+.show-information{
+    width: 70%;
+}
+.poster{
+    width: 25%;
+    height: 275px;
+    background-color: yellow;
+    border-radius: 6%;
+    border: 3px solid gray;
+}
+.details{
+    width: 73%;
+    padding-top: 1%;
+    text-align: left;
+}
+.title-rating h1{
+    width: 70%;
+}
+.rating-info{
+    width: 28%;
+    margin-bottom: 10px;
+}
+.quality{
+    background-color: rgb(26, 184, 236)!important;
+    width: 33px!important;
+    height: 19px!important;
+    border-radius: 4px!important;
+    color: black!important;
+    text-align: center;
+    font-size: 12px;
+}
+.rating{
+    color: rgba(224, 202, 202, 0.637);
+    margin-right: 4px;
+    font-size: 13px;
+    padding-top: 3px;
+}
+.rating-i{
+    color: rgba(224, 202, 202, 0.637);
+    margin-right: 4px;
+    font-size: 12px;
+    padding-bottom: 2px;
+}
+.show-period{
+    color: rgba(224, 202, 202, 0.637);
+    font-size: 14px;
+    padding-top: 2px;
+}
+.overview{
+    color: rgba(224, 202, 202, 0.637);
+    font-weight: 300;
+}
+.result{
+    width: 60%;
+    color: rgba(224, 202, 202, 0.637);
+    font-weight: 300;
+
+}
+/* end of details styles */

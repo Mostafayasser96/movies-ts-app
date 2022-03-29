@@ -10,7 +10,7 @@ const Footer = () => {
 	const links2: string[] = ['Action Movies', 'Horror Movies', 'Sci-fi Movies', 'Thriller Movies'];
 	const links3: string[] = ['Contact', 'Request'];
 	return (
-		<div className='footer d-flex space-between'>
+		<div className='footer'>
 			<div className='footer-info'>
 				<div className='logo-div'>
 					<img src='https://s1.bunnycdn.ru/assets/sites/fmovies/logo2.png'
@@ -24,7 +24,7 @@ const Footer = () => {
 						required&#46; With a big database and great features&#44; we&#96;re confident FMovies is the best free movies
 						online website in the space that you can&#96;t simply miss&#33;
 					</p>
-					<a href='https://twitter.com/fmoviesdotto' className='twitter-a d-flex justify-content-between'>
+					<a href='https://twitter.com/fmoviesdotto' className='twitter-a'>
 						<FontAwesomeIcon icon={faTwitter} className='footer-social-i' />
 						<span>Connect with us on twitter</span>
 					</a>
@@ -35,21 +35,21 @@ const Footer = () => {
 			<div className='footer-links d-flex justify-content-between'>
 				<ListGroup className='links-group1'>
 
-					{links1.map((link) =>
-						<ListGroup.Item className='link1'>{link}</ListGroup.Item>
+					{links1.map((link, index) =>
+						<ListGroup.Item key={index} className='link1'>{link}</ListGroup.Item>
 					)}
 
 				</ListGroup>
 				<ListGroup className='links-group2'>
 
-					{links2.map((link) => 
-						 <ListGroup.Item className='link2'>{link}</ListGroup.Item>
+					{links2.map((link, index) => 
+						 <ListGroup.Item key={index} className='link2'>{link}</ListGroup.Item>
 					)}
 				</ListGroup>
 				<ListGroup className='links-group3'>
 
-					{links3.map((link) => 
-						<ListGroup.Item className='link3'>{link}</ListGroup.Item>
+					{links3.map((link, index) => 
+						<ListGroup.Item key={index}  className='link3'>{link}</ListGroup.Item>
 					)}
 				</ListGroup>
 			</div>

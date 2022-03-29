@@ -1,14 +1,23 @@
 /* start of carousel styles */
 .carousel{
     height: 600px;
-    background-color: red;
     width: 100%;
-    /* position: absolute!important; */
     top: 0px;
-    margin-bottom: 200px;
+    box-shadow: 5px 10px 18px #88872a;
+    margin-top: -100px!important;
+  }
+  .movie-poster{
+    background: no-repeat center center scroll;
+    object-fit: cover !important;
+    height: 600px!important;
+  }
+  .carousel-indicators button{
+    width: 15px!important;
+    height: 12px!important;
+    border-radius: 50%!important;
   }
   .slider-show-data{
-    position: relative!important;
+    position: absolute!important;
     left: 0px!important;
     width: 100%;
     margin-top: 15%;
@@ -68,7 +77,8 @@
     font-weight: 300!important;
     border-radius: 25px!important;
     outline: none!important;
-    background-color: yellow!important;
+    background-color: transparent!important;
+
   }
   .slider-btn1{
     border: 1px solid lightblue!important;
@@ -289,3 +299,36 @@
   color: black;
 }
 /* end of more-social modal */
+
+
+/* handling carousel responsivity */
+@media (min-width: 0px) and (max-width: 581px) {
+  .slider-p{
+    display: none;
+  }
+  .slider-sub-data{
+    width: 50%!important;
+  }
+  .slider-btn-group{
+    width: 55%;
+    padding-top: 10px;
+  }
+  .carousel-indicators{
+    visibility: hidden;
+  }
+}
+@media (min-width: 581px) and (max-width: 668px){
+  .slider-show-data{
+     margin-bottom: 35px!important;
+  }
+  .slider-sub-data{
+    width: 40%!important;
+  }
+  .slider-p{
+   width: 100%!important;
+  }
+  .slider-btn-group{
+    width: 55%;
+  }
+}
+/* end of handling carousel responsivity */

@@ -11,27 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* this color is standard to our website:  background-color: #0d1218, #25313f; 
+   transparent-white: rgba(224, 202, 202, 0.637); 
+} */
 
 /* this is the standard color for the pages : #2A3642 */
 
 .website-info{
-  position: relative;
-  z-index: 999;
-  margin-top: 44%;
   width: 100%;
   text-align: left;
   padding-left: 20px;
-  background-color: black;
+  background-color: #0d1218;
   padding-top: 5%;
-
+  padding-bottom: 3%;
 }
 .info-h{
-  font-size: 23px;
-  color: white;
+  font-size: 20px;
+  color: #FFFFFF8C;
 }
 .info-p{
   font-size: 15px;
-  color: white;
+  color: #FFFFFF8C;
   width: 95%;
   margin-bottom: 0px;
 }
@@ -49,6 +49,8 @@ code {
 }
 .social-media{
   width: 40%;
+  display: flex;
+  justify-content: space-between;
 }
 .social-i{
   padding-right: 10px;
@@ -185,61 +187,69 @@ code {
 .more-item p{
   font-size: 14px;
 }
-
-
-/* start of main styles */
-.main{
-  padding: 20px;
+/* start of main2 styles */
+.show-list{
+  padding: 50px 20px 60px;
+  background-color: #0d1218;
+  margin-top: -100px;
+  padding-top: 12%;
 }
 .heading{
-  width: 44%;
+  color: rgb(79,79,79);
+  font-weight: 400;
+  padding-bottom: 43px;
+  text-align: left;
 }
-.recommended, .latest-movies, .latest-tv, .requested{
-  padding-bottom: 20px;
+.heading span{
+  border-bottom: 1px solid rgb(79,79,79);
 }
-.heading h2, .latest-movies h2, .latest-tv h2, .requested h2 {
-  color: rgb(79 79 79)!important;
-  font-size: 26px;
+.filter{
+  width: 16%;
+  margin-bottom: 40px;
 }
-.movies-btn, .shows-btn, .trending-btn{
-  height: 33px;
-  border-radius: 5px;
-  border: none;
-  color: white;
+.years-dropdown{
+  border-radius: 15px!important;
 }
-.movies-btn:hover, .shows-btn:hover, .trending-btn:hover{
-  color: grey;
+.dropdown-toggle{
+  background-color: #25313f!important;
 }
-.main-stream-overlay-i{
-  color: blue!important;
-  font-size: 10px;
-  margin-right: 4px;
-  background-color: white!important;
-  padding: 5px;
-  border-radius: 25px;
-  margin-top: 5px;
+.dropdown-toggle::after{
+  display: none!important;
 }
-.movies-btn{
-  background-color: blue;
+.year-i{
+  padding-top: 1px;
+  padding-right: 4px!important;
 }
-.btn-i{
-  padding-right: 7px;
+.year-span{
+  text-transform: capitalize;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgb(102, 95, 95);
+  padding-right: 4px;
 }
-.heading h2 span, .latest-movies h2 span, 
-.latest-tv h2 span, .requested h2 span{
-  border-bottom: 1px solid grey;
-  padding-bottom: 5px;
+.all-span{
+  font-weight: 400;
+  text-transform: capitalize;
 }
-.view-btn{
-  background-color: inherit;
-  border: none;
-  color: cornflowerblue;
+.filter-btn{
+  border-radius: 4px!important;
+  background-color: #0ea099b7!important;
+  text-transform: capitalize!important;
+  font-weight: 400!important;
+  color: rgb(63, 60, 60)!important;
 }
-.view-btn:hover{
-  color: grey;
+.filter-i{
+  color: rgb(102, 95, 95);
+  padding: 2px 2px 0px 0px!important;
 }
-.viewbtn-i{
-  padding-left: 5px;
-}
-/* end of main styles */
+/* end of main2 styles */
 
+
+/* handling responsive design  */
+@media (min-width: 0px) and (max-width: 700px) {
+  .social-media{
+    display: none!important;
+  }
+}
+
+/* end handling responsive design */

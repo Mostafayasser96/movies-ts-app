@@ -18,9 +18,9 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='movies' element={<Movies />} />
-          <Route path='TV-series' element={<TVSeries />} />
-          <Route path='top-imdb' element={<TopImdb />} />
+          <Route path=':name' element={<Movies />} />
+          <Route path=':name' element={<TVSeries />} />
+          <Route path=':name' element={<TopImdb />} />
         </Routes>
       </Router>
     </div>

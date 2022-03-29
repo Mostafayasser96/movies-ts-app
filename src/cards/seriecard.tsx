@@ -1,25 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import "bootstrap/dist/css/bootstrap.css";
 import '../styles/card.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPlay,
-  faStar
+  faStar,
+  faFilter, 
+  faCalendarDay
 } from '@fortawesome/free-solid-svg-icons';
 import {
   Button,
+  CardImgProps,
   OverlayTrigger,
   Tooltip,
   TooltipProps
 
 } from "react-bootstrap";
+import {
+  CardProps, 
+  Latest,
+  Seasons
+} from '../types/types';
+import { Dropdown } from 'react-bootstrap';
 
 
-
-
-
-const MyCard = () => {
-
+const MySerieCard: FC<CardProps['serie']> = (serie: CardProps['serie']) => {
   // the tooltip of the card
   const MyCardTooltip = (props: JSX.IntrinsicAttributes & TooltipProps & React.RefAttributes<HTMLDivElement>) => {
 
@@ -29,20 +34,24 @@ const MyCard = () => {
         className='tooltip'
 
       >
-
-        <h6 className='movie-name'>The Adam Project</h6>
+        <h6 className='movie-name'>
+          Red Notice
+        </h6>
         <div className='movie-data d-flex justify-content-between'>
           <span className=' assessment-span d-flex justify-content-between'>
             <FontAwesomeIcon icon={faStar} className='assessment-i' />
-            <span className='movie-assessment'>7.5</span>
+            <span className='movie-assessment'>
+              {serie?.id}
+            </span>
           </span>
           <span className='production-year'>2022</span>
           <span className='duration'>110 min</span>
           <span className='quality'>HD</span>
         </div>
         <p className='abstract'>
-          Adam Reed, age 12, and still grieving the sudden death of his father a year earlier, walks into his
-          garage one night to find a wounded pilot hiding there. This...
+          {/* Adam Reed, age 12, and still grieving the sudden death of his father a year earlier, walks into his
+          garage one night to find a wounded pilot hiding there. This... */}
+          {serie?.overview}
         </p>
         <div className='movie-data2'>
           <p className='country-p'>
@@ -71,43 +80,50 @@ const MyCard = () => {
   }
   // the live-stream div const(It shows on hover over  MyCard component)
   const [streamShow, setStreamShow] = useState<boolean>(false);
+  const years: string[] = [
+    '2022', '2021', '2020', '2019', '2018', '2017', '2016', '2015', '2014', '2013', '2012', '2011',
+    '2010', '2009', '2008', '2007', '2006', '2005', '2004', '2003', '2002', '2001', '2000s', '1990s',
+    '1980s', '1970s', '1960s', '1950s', '1940s', '1930s', '1920s', '1910s', '1900s'
+  ]
   return (
+
+   
+
     <OverlayTrigger
       placement='right'
       overlay={MyCardTooltip}
-      delay={{ show: 1000, hide: 10000 }}
+      delay={{ show: 1000, hide: 1000 }}
     >
-      <div className='card'
+      <div className='card col-lg-2 '
         onMouseEnter={() => setStreamShow(true)}
         onMouseLeave={() => setStreamShow(false)}
       >
-        {/* note: the stream div that shows onhover is here */}
         {
           streamShow &&
           <div className='stream'>
             <div className='stream-shadow'>
               <div className='stream-overlay'>
-              <FontAwesomeIcon icon={faPlay} className='stream-overlay-i' />
+                <FontAwesomeIcon icon={faPlay} className='stream-overlay-i' />
               </div>
 
             </div>
           </div>
         }
         <div className='card-img-div'>
-          <img src=''
+          <img src={`https://image.tmdb.org/t/p/w500/`}
             alt='show-poster'
             className='show-img'
           />
 
         </div>
         <div className='show-quality'>
-          CAM
+          {}
         </div>
         <div className='card-info'>
           <p className='show-name text-white'>
-            The Batman
+            {}
           </p>
-          <div className='show-info d-flex space-between'>
+          <div className='show-info d-flex justify-content-between'>
             <div className='sub-info d-flex justify-content-space-between'>
               <div className='year'>
                 2022
@@ -125,7 +141,7 @@ const MyCard = () => {
 
       </div>
     </OverlayTrigger>
-
+   
   )
 }
-export default MyCard;
+export default MySerieCard;

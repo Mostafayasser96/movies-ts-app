@@ -1,0 +1,123 @@
+/* start of main styles */
+.main{
+    padding: 20px;
+    background-color: #0d1218;
+  }
+  .heading{
+    width: 44%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .heading-btn-group{
+      width: 26%!important;
+      display: flex;
+      justify-content: space-between;
+  }
+  .main-heading{
+    padding-bottom: 35px;
+  }
+  .recommended, .latest-movies, .latest-tv, .requested{
+    padding-bottom: 20px;
+  }
+  .latest-movies-cards{
+    padding-left: 15px;
+  }
+  .heading h2, .latest-movies h2, .latest-tv h2, .requested h2 {
+    color: #FFFFFF8C!important;
+    font-size: 26px;
+    font-weight: 300;
+  }
+  .movies-btn, .shows-btn, .trending-btn{
+    height: 28px!important;
+    width: 34%!important;
+    border-radius: 5px!important;
+    border: none!important;
+    color: #FFFFFF8C!important;
+    padding-bottom: 4px!important;
+    font-size: 12px!important;
+    margin-right: 4px!important;
+    padding: 0px!important;
+  }
+  .movies-btn{
+    background-color: #569cdb!important;
+    font-weight: 300!important;
+  }
+  .shows-btn, .trending-btn{
+    background-color: #25313f!important;
+    font-weight: 300!important;
+  }
+  .movies-btn:hover, .shows-btn:hover, .trending-btn:hover{
+    color: grey!important;
+  }
+.main-stream-overlay-i{
+    color: #569cdb!important;
+    font-size: 7px;
+    margin-right: 4px;
+    background-color: white!important;
+    padding: 5px;
+    border-radius: 10px;
+  }
+  
+  .btn-i{
+    padding-right: 7px;
+  }
+  .heading h2 span, .latest-movies h2 span, 
+  .latest-tv h2 span, .requested h2 span{
+    border-bottom: 1px solid grey;
+    padding-bottom: 5px;
+  }
+  .view-btn{
+    background-color: inherit;
+    border: none;
+    color: cornflowerblue;
+  }
+  .view-btn:hover{
+    color: grey;
+  }
+  .viewbtn-i{
+    padding-left: 5px;
+  }
+  /* end of main styles */
+
+  /* handling responsive design */
+@media (min-width: 0px) and (max-width: 494px) {
+  .heading{
+      display: block;
+      width: 100%;
+  }  
+  .heading h2{
+    margin-bottom: 8%;
+  }  
+  .heading-btn-group{
+    width: 66%!important;
+  }
+  .latest-movies-cards{
+      display: flex;
+      justify-content: space-between;
+  }
+}
+@media (min-width: 494px) and (max-width: 780px){
+    .heading{
+        width: 85%!important;
+    }
+    .heading h2{
+      margin-right: 6%!important;
+    }
+    .heading-btn-group{
+      width: 50%!important;
+      margin-top: 6px!important;
+    }
+    .movies-btn, .show-btn, .trending-btn{
+        width: 34%!important;
+    }
+}
+@media (min-width: 780px) and (max-width: 1326px){
+    .heading{
+        width: 44%!important;
+    }
+    .heading-btn-group{
+        width: 58%!important;
+        margin-top: 6px;
+    }
+}
+  /* end of handling responsive design */
