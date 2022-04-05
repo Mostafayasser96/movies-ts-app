@@ -194,13 +194,14 @@ code {
   margin-top: -100px;
   padding-top: 12%;
 }
-.heading{
-  color: rgb(79,79,79);
+.main2-heading{
   font-weight: 400;
   padding-bottom: 43px;
   text-align: left;
+  padding-top: 50px;
+  color: #FFFFFF8C;
 }
-.heading span{
+.main2-heading span{
   border-bottom: 1px solid rgb(79,79,79);
 }
 .filter{
@@ -253,3 +254,24 @@ code {
 }
 
 /* end handling responsive design */
+.movies-card-list{
+  padding-left: 20px!important;
+}
+/* cardholder responsive design */
+@media (min-width: 440px) and (max-width: 1349px){
+  .main2-heading{
+      font-weight: 400;
+      padding-bottom: 43px;
+      text-align: left!important;
+      padding-top: 50px;
+      color: #FFFFFF8C;
+      width: 50%!important;
+  }
+  .filter{
+
+  }
+  .dropdown-toggle{
+    margin-right: 10px;
+  }
+}
+/* end of cardholder responsive design */

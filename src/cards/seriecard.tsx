@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPlay,
   faStar,
-  faFilter, 
+  faFilter,
   faCalendarDay
 } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -17,14 +17,24 @@ import {
 
 } from "react-bootstrap";
 import {
-  CardProps, 
+  CardProps,
   Latest,
-  Seasons
+  Season,
+  Card,
+  Movie
 } from '../types/types';
 import { Dropdown } from 'react-bootstrap';
 
 
-const MySerieCard: FC<CardProps['serie']> = (serie: CardProps['serie']) => {
+const MySerieCard: FC<Card> = (serie: {
+  id: number;
+  episode_count?: number;
+  season_number: number;
+  name: string;
+  last_air_date: string;
+  overview: string;
+  poster_path: string;
+}) => {
   // the tooltip of the card
   const MyCardTooltip = (props: JSX.IntrinsicAttributes & TooltipProps & React.RefAttributes<HTMLDivElement>) => {
 
@@ -35,7 +45,7 @@ const MySerieCard: FC<CardProps['serie']> = (serie: CardProps['serie']) => {
 
       >
         <h6 className='movie-name'>
-          Red Notice
+          {serie?.name}
         </h6>
         <div className='movie-data d-flex justify-content-between'>
           <span className=' assessment-span d-flex justify-content-between'>
@@ -44,23 +54,25 @@ const MySerieCard: FC<CardProps['serie']> = (serie: CardProps['serie']) => {
               {serie?.id}
             </span>
           </span>
-          <span className='production-year'>2022</span>
-          <span className='duration'>110 min</span>
+          <span className='production-year'>
+            {serie?.id}
+          </span>
+          <span className='duration'>
+            {serie?.last_air_date}
+          </span>
           <span className='quality'>HD</span>
         </div>
         <p className='abstract'>
-          {/* Adam Reed, age 12, and still grieving the sudden death of his father a year earlier, walks into his
-          garage one night to find a wounded pilot hiding there. This... */}
           {serie?.overview}
         </p>
         <div className='movie-data2'>
           <p className='country-p'>
             Country:
-            <a href='#' className='country'> United States</a>
+            <a href='#' className='country'> {serie?.season_number}</a>
           </p>
           <p className='genre-p'>
             Genre:
-            <a href='#' className='genre'> Comedy</a>
+            <a href='#' className='genre'> {serie?.season_number}</a>
           </p>
         </div>
         <div className='stream-btns d-flex justify-content-between'>
@@ -87,7 +99,7 @@ const MySerieCard: FC<CardProps['serie']> = (serie: CardProps['serie']) => {
   ]
   return (
 
-   
+
 
     <OverlayTrigger
       placement='right'
@@ -110,38 +122,38 @@ const MySerieCard: FC<CardProps['serie']> = (serie: CardProps['serie']) => {
           </div>
         }
         <div className='card-img-div'>
-          <img src={`https://image.tmdb.org/t/p/w500/`}
+          <img src={`https://image.tmdb.org/t/p/w500/${serie?.poster_path}`}
             alt='show-poster'
             className='show-img'
           />
 
         </div>
         <div className='show-quality'>
-          {}
+          {serie?.id}
         </div>
         <div className='card-info'>
           <p className='show-name text-white'>
-            {}
+            {serie?.name}
           </p>
           <div className='show-info d-flex justify-content-between'>
             <div className='sub-info d-flex justify-content-space-between'>
               <div className='year'>
-                2022
+                {serie?.episode_count}
               </div>
               <span className='dot-span'></span>
               <div className='show-time'>
-                111 min
+                {serie?.id}
               </div>
             </div>
             <div className='show-type'>
-              movie
+               serie
             </div>
           </div>
         </div>
 
       </div>
     </OverlayTrigger>
-   
+
   )
 }
 export default MySerieCard;

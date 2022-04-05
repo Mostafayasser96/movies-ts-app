@@ -21,6 +21,8 @@ import {
   Navbar,
   Button,
   NavItem,
+  NavDropdown,
+  Container
 } from 'react-bootstrap';
 import {
   Link,
@@ -50,7 +52,7 @@ const Header = () => {
   // the navbar dropdown states
   const [dropdown1, setDropdown1] = useState<boolean>(false);
   const [dropdown2, setDropdown2] = useState<boolean>(false);
-  const [min1] = useState<number>(0);
+  const min1 = 0;
   const [max1] = useState<number>(8);
   const [min2] = useState<number>(9);
   const [max2] = useState<number>(16);
@@ -83,16 +85,10 @@ const Header = () => {
 
   return (
     <div className='header'>
-      <Navbar className='navbar parent-nav'
+      {/* <Navbar className='navbar parent-nav'
         collapseOnSelect
         sticky='top'
       >
-
-        {/* Note: 1- to avoid conflict of href between Navbar.Brand and react router's Link element path attribute
-						  we will use the hook called 'useHistory' of react, relating it to the onClick attribute 
-						  of the navbar.Brand.
-						  2- refactor the css file to be consistent with bootstrap react.(indent styles within className attributes).
-						*/}
         <Navbar.Brand href='#'>
           <img src='https://s1.bunnycdn.ru/assets/sites/fmovies/logo2.png'
             className='logo-img'
@@ -107,7 +103,6 @@ const Header = () => {
                          data-toggle='collapse'
           />
           <Navbar.Collapse id='responsive-navbar-nav'
-            className='navbar-collapse'
           >
             <Nav.Link className='inner-nav-link' onClick={() => navigate('/')}>
               Home
@@ -251,7 +246,167 @@ const Header = () => {
           </NavItem>
         </Nav>
 
-      </Navbar>
+      </Navbar> */}
+
+      <Navbar bg="light" 
+              expand="lg" 
+              sticky='top'
+              className='parent-nav'
+              >
+        <Container>
+          <Navbar.Brand href='#'>
+            <img src='https://s1.bunnycdn.ru/assets/sites/fmovies/logo2.png'
+              className='logo-img'
+              alt='Fmovies logo'
+            ></img>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link className='inner-nav-link' onClick={() => navigate('/')}>
+                Home
+              </Nav.Link>
+              <Nav.Link title='Genre'
+                className='genres-dropdown'
+                onMouseEnter={() => setDropdown1(true)}
+                onMouseLeave={() => setDropdown1(false)}
+              >
+                Genre
+                <div className='menu'>
+                  <div className='menu1'>
+                    {dropdown1 &&
+                      genres.map((genre, index) => {
+                        if (index >= min1 && index <= max1) {
+                          return (
+                            <div key={index}> {genre} </div>
+                          )
+                        }
+                      })
+                    }
+                  </div>
+                  <div className='menu2'>
+                    {dropdown1 &&
+                      genres.map((genre, index) => {
+                        if (index >= min2 && index <= max2) {
+                          return (
+                            <div key={index}> {genre} </div>
+                          )
+                        }
+                      })
+                    }
+                  </div>
+                  <div className='menu3'>
+                    {dropdown1 &&
+                      genres.map((genre, index) => {
+                        if (index >= min3 && index <= max3) {
+                          return (
+                            <div key={index}> {genre} </div>
+                          )
+                        }
+                      })
+                    }
+                  </div>
+                </div>
+              </Nav.Link>
+
+
+
+              <Nav.Link title='Country'
+                className='countries-dropdown'
+                onMouseEnter={() => setDropdown2(true)}
+                onMouseLeave={() => setDropdown2(false)}
+              >
+                Country
+                <div className='menu'>
+                  <div className='menu1'>
+                    {dropdown2 &&
+                      countries.map((country, index) => {
+                        if (index >= min4 && index <= max4) {
+                          return (
+                            <div key={index}> {country} </div>
+                          )
+                        }
+                      })
+                    }
+                  </div>
+                  <div className='menu2'>
+                    {dropdown2 &&
+                      countries.map((country, index) => {
+                        if (index >= min5 && index <= max5) {
+                          return (
+                            <div key={index}> {country} </div>
+                          )
+                        }
+                      })
+                    }
+                  </div>
+                  <div className='menu3'>
+                    {dropdown2 &&
+                      countries.map((country, index) => {
+                        if (index >= min6 && index <= max6) {
+                          return (
+                            <div key={index}> {country} </div>
+                          )
+                        }
+                      })
+                    }
+                  </div>
+                </div>
+              </Nav.Link>
+
+
+
+
+
+
+
+
+
+
+              <Nav.Link className='inner-nav-link'
+                onClick={() => navigate('/movies')}
+
+              >
+                Movies
+              </Nav.Link>
+              <Nav.Link className='inner-nav-link'
+                onClick={() => navigate('/Tv-series')}
+
+              >
+                TV&#45;Series
+              </Nav.Link>
+              <Nav.Link className='inner-nav-link'
+                onClick={() => navigate('/top-imdb')}
+
+              >
+                Top IMDb
+              </Nav.Link>
+        </Nav>
+        
+      </Navbar.Collapse>
+
+      <Form className='navbar-form d-inline-flex'>
+          <Button type='submit' className='search-btn'>
+            <FontAwesomeIcon icon={faSearch} className='search-i' />
+          </Button>
+          <FormControl type='search'
+            placeholder='Enter your keywords...'
+            aria-label='search'
+            className='search-input'
+          />
+        </Form>
+      <Nav className='register'>
+          <NavItem className='profile'>
+            <FontAwesomeIcon icon={faUser} className='profile-i' />
+          </NavItem>
+
+          <NavItem className='register-p' onClick={() => setShow(true)}>
+            Login/Register
+            <Login show={showModal} onHide={() => setShow(false)} />
+          </NavItem>
+        </Nav>
+    </Container>
+      </Navbar >
     </div >
 
 

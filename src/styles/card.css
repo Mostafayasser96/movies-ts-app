@@ -42,11 +42,14 @@
   }
   .show-info{
     margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
   }
   .sub-info{
    width: 54%;
    font-size: 15px;
-  
+   display: flex;
+   justify-content: space-between;
   }
   .dot-span{
     width: 4px;
@@ -83,11 +86,9 @@
     text-align: left!important;
     margin-bottom: 13px!important;
     font-weight: 400!important;
-    /* background-color: #2A3642; */
   }
   .movie-data{
     padding-bottom: 10px;
-    /* background-color: #2A3642;; */
   }
   .assessment-span{
     width: 40px!important;
@@ -108,33 +109,31 @@
   }
   .abstract{
     text-align: left!important;
-    color: rgb(79,79,79)!important;
+    color: #FFFFFF8C!important;
     margin-bottom: 5px!important;
-    /* background-color: #2A3642; */
   }
   .movie-data2{
     text-align: left!important;
     font-size: 12px!important;
-    /* background-color: #2A3642; */
   }
   .stream-btns{
     /* background-color: #2A3642; */
   }
   .country-p{
     margin-bottom: 0px!important;
-    color: rgb(79,79,79)!important;
+    color: #FFFFFF8C!important;
   }
   .country{
-    color: rgb(79,79,79)!important;
+    color: #FFFFFF8C!important;
   }
   .country:hover{
     color: white!important;
   }
   .genre-p{
-    color: rgb(79,79,79)!important;
+    color: #FFFFFF8C!important;
   }
   .genre{
-    color: rgb(79,79,79)!important;
+    color: #FFFFFF8C!important;
   }
   .genre:hover{
     color: white!important;
@@ -204,24 +203,62 @@
   @media (min-width: 0px) and (max-width: 494px){
     .card{
       width: 48%!important;
+      height: 395px!important;
     }
+    
   }
   @media (min-width: 494px) and (max-width: 595px){
     .card{
       width: 30%!important;
+      height: 300px!important;
     } 
+    .show-quality{
+      width: 19%!important;
+    }
+    .sub-info{
+      width: 58%!important;
+      font-size: 12px!important;
+    }
+    .show-type{
+      width: 29%!important;
+      height: 5%!important;
+      font-size: 13px!important;
+    }
   }
   @media (min-width: 595px) and (max-width: 765px){
     .card{
       width: 22%!important;
+      height: 310px!important;
     } 
+    .show-quality{
+      width: 20%!important;
+    }
+    .sub-info{
+      width: 60%!important;
+      font-size: 13px!important;
+    }
+    .show-type{
+      width: 30%!important;
+      height: 5%!important;
+      font-size: 12px!important;
+    }
   }
   @media (min-width: 765px) and (max-width: 1275px){
     .card{
       width: 18%!important;
     } 
+    .show-quality{
+      width: 18%!important;
+    }
+    .sub-info{
+      width: 57%!important;
+    }
+    .show-type{
+      width: 28%!important;
+    }
+    
   }
-  @media (min-width: 1275px) and (max-width: 1326px){
+  @media (min-width: 1275px) and (max-width: 1349px){
     .card{
       width: 15%!important;
     } 

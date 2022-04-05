@@ -13,8 +13,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   CarouselData,
   Latest,
-  Seasons,
-  Movie
+  Season,
+  Movie,
+  Card
 } from "../types/types";
 import { useLocation, useParams } from "react-router-dom";
 import MyMovieCard from "../cards/moviecard";
@@ -29,16 +30,16 @@ const Main2 = () => {
   ]
   const location = useLocation();
   const [dropdown, setDropdown] = useState<boolean>(false);
-  const [movies, setMovies] = useState<Movie>();
-  const [topRated, setTopRated] = useState<Movie>();
-  const [tvSeries, setTvSeries] = useState<Seasons>();
+  const [movies, setMovies] = useState<Card[]>([]);
+  const [topRated, setTopRated] = useState<Card[]>([]);
+  const [tvSeries, setTvSeries] = useState<Card[]>([]);
   const handleChange = () => {
     setDropdown(true);
   }
   const handleMovies = () => {
     const apiKey = process.env.REACT_APP_API_KEY;
     fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`)
-      .then(response => response.json() as Promise<Movie>)
+      .then(response => response.json() as Promise<Card[]>)
       .then(data => {
         console.log(data);
         setMovies(data);
@@ -47,7 +48,7 @@ const Main2 = () => {
   const handleTopRated = () => {
     const apiKey = process.env.REACT_APP_API_KEY;
     fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`)
-      .then(response => response.json() as Promise<Movie>)
+      .then(response => response.json() as Promise<Card[]>)
       .then(data => {
         console.log(data);
         setTopRated(data);
@@ -55,11 +56,15 @@ const Main2 = () => {
   }
   const handleSeries = () => {
     const apiKey = process.env.REACT_APP_API_KEY;
-    fetch(`https://api.themoviedb.org/3/tv/{tv_id}?api_key=${apiKey}&language=en-US`)
-      .then(response => response.json() as Promise<Seasons>)
+    fetch(`https://api.themoviedb.org/3/tv/latest?api_key=${apiKey}&language=en-US`)
+      .then(response => response.json() as Promise<Card>)
       .then(data => {
         console.log(data);
-        setTvSeries(data);
+        let shows = [];
+        for (let i = 0; i <= 12; i++) {
+          shows.push(data)
+        }
+        setTvSeries(shows);
       });
   }
   // the api call
@@ -70,47 +75,50 @@ const Main2 = () => {
   }, [])
   const { name } = useParams();
   return (
-    <div className="show-list">
-      <h1 className="heading">
-        <span>{name}</span>
-      </h1>
-      <div className="filter d-flex justify-content-between">
-        <Dropdown
-          title="Year"
-          id='years'
-          className="years-dropdown"
+    <div className="show-list row">
+      <div className="page-heading">
+        <h1 className="main2-heading col col-sm-12 col-md-6 col-sm-4">
+          <span>{name}</span>
+        </h1>
+        <div className="filter d-flex justify-content-between">
+          <Dropdown
+            title="Year"
+            id='years'
+            className="years-dropdown"
 
-        >
-          <Dropdown.Toggle className="dropdown-toggle d-flex justify-content-between">
-            <FontAwesomeIcon icon={faCalendarDay} className='year-i' />
-            <span className="year-span">Year</span>
-            <span className="all-span">All</span>
-          </Dropdown.Toggle>
-          <Dropdown.Menu className="years-menu bg-dark">
-            {years.map((year, index) =>
-              <Dropdown.Item key={index}>
-                <input type='checkbox' className="item-check" />
-                {year}
-              </Dropdown.Item>
-            )}
-          </Dropdown.Menu>
-        </Dropdown>
-        <Button type="submit" className="filter-btn d-flex justify-content-between">
-          <FontAwesomeIcon icon={faFilter} className='filter-i' />
-          Filter
-        </Button>
+          >
+            <Dropdown.Toggle className="dropdown-toggle d-flex justify-content-between">
+              <FontAwesomeIcon icon={faCalendarDay} className='year-i' />
+              <span className="year-span">Year</span>
+              <span className="all-span">All</span>
+            </Dropdown.Toggle>
+            <Dropdown.Menu className="years-menu bg-dark">
+              {years.map((year, index) =>
+                <Dropdown.Item key={index}>
+                  <input type='checkbox' className="item-check" />
+                  {year}
+                </Dropdown.Item>
+              )}
+            </Dropdown.Menu>
+          </Dropdown>
+          <Button type="submit" className="filter-btn d-flex justify-content-between">
+            <FontAwesomeIcon icon={faFilter} className='filter-i' />
+            Filter
+          </Button>
 
+        </div>
       </div>
 
+
       <div className="movies-card-list row">
-        {/* {name == 'movies' && movies?.id && movies?.map((movie, index) =>
-          <MyMovieCard key={index} movie={movie} />
+        {name == 'movies' && movies?.map((movie, index) =>
+          <MyMovieCard key={index} {...movie} />
         )}
-        {name == 'Tv-series' && tvSeries?.name  && tvSeries?.map((serie, index) => 
-          <MySerieCard key={index} serie={serie} />
+        {name == 'Tv-series' && tvSeries?.map((serie, index) => 
+          <MySerieCard key={index} {...serie} />
         )}
-        {name == 'top-imdb' && topRated?.vote_count && topRated?.map((movie, index) =>
-          <MyTopRatedCard key={index} movie={movie} />
+        {/* {name == 'top-imdb' && topRated?.map((movie, index) =>
+          <MyTopRatedCard key={index} {...movie} />
         )} */}
       </div>
     </div>

@@ -20,13 +20,25 @@ import {
   CardProps,
   CarouselData,
   Movie, 
+  Card,
+  Season
 } from '../types/types';
 import { Dropdown } from 'react-bootstrap';
 
 
 
 
-const MyMovieCard: FC<CardProps['movie']> = (movie: CardProps['movie']) => {
+const MyMovieCard: FC<Card> = (movie: { 
+   title: string;
+   vote_average: number;
+   release_date: string;
+   vote_count: number;
+   overview: string;
+   original_language: string;
+   genre_ids: number;
+   id: number;
+   poster_path: string;
+}) => {
   // the tooltip of the card
   const MyCardTooltip = (props: JSX.IntrinsicAttributes & TooltipProps & React.RefAttributes<HTMLDivElement>) => {
 
@@ -37,29 +49,40 @@ const MyMovieCard: FC<CardProps['movie']> = (movie: CardProps['movie']) => {
 
       >
         <h6 className='movie-name'>
-          Red Notice
+          {movie?.title}
         </h6>
         <div className='movie-data d-flex justify-content-between'>
           <span className=' assessment-span d-flex justify-content-between'>
             <FontAwesomeIcon icon={faStar} className='assessment-i' />
-            <span className='movie-assessment'>7.5</span>
+            <span className='movie-assessment'>
+              {movie?.vote_average}
+            </span>
           </span>
-          <span className='production-year'>2022</span>
-          <span className='duration'>110 min</span>
-          <span className='quality'>HD</span>
+          <span className='production-year'>
+            {movie?.release_date?.slice(0, 4)}
+            </span>
+          <span className='duration'>
+            {movie?.id}
+            </span>
+          <span className='quality'>
+            {movie?.vote_count}
+            </span>
         </div>
         <p className='abstract'>
-          Adam Reed, age 12, and still grieving the sudden death of his father a year earlier, walks into his
-          garage one night to find a wounded pilot hiding there. This...
+          {movie?.overview}
         </p>
         <div className='movie-data2'>
           <p className='country-p'>
             Country:
-            <a href='#' className='country'> United States</a>
+            <a href='#' className='country'> 
+            {movie?.original_language}
+            </a>
           </p>
           <p className='genre-p'>
             Genre:
-            <a href='#' className='genre'> Comedy</a>
+            <a href='#' className='genre'> 
+            {movie?.genre_ids}
+            </a>
           </p>
         </div>
         <div className='stream-btns d-flex justify-content-between'>
@@ -108,27 +131,27 @@ const MyMovieCard: FC<CardProps['movie']> = (movie: CardProps['movie']) => {
           </div>
         }
         <div className='card-img-div'>
-          <img src={`https://image.tmdb.org/t/p/w500/${movie?.page}`}
+          <img src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
             alt='show-poster'
             className='show-img'
           />
 
         </div>
         <div className='show-quality'>
-          {}
+          HD
         </div>
         <div className='card-info'>
           <p className='show-name text-white'>
-            {}
+            {movie?.title}
           </p>
-          <div className='show-info d-flex justify-content-between'>
-            <div className='sub-info d-flex justify-content-space-between'>
+          <div className='show-info'>
+            <div className='sub-info'>
               <div className='year'>
-                2022
+                {movie?.release_date?.slice(0, 4)}
               </div>
               <span className='dot-span'></span>
               <div className='show-time'>
-                111 min
+               {movie?.id}
               </div>
             </div>
             <div className='show-type'>

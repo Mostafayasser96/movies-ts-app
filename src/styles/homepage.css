@@ -9,7 +9,7 @@
     justify-content: space-between;
   }
   .heading-btn-group{
-      width: 26%!important;
+      width: 50%!important;
       display: flex;
       justify-content: space-between;
   }
@@ -20,6 +20,9 @@
     padding-bottom: 20px;
   }
   .latest-movies-cards{
+    padding-left: 15px;
+  }
+  .latest-tv-cards, .requested-cards{
     padding-left: 15px;
   }
   .heading h2, .latest-movies h2, .latest-tv h2, .requested h2 {
@@ -111,7 +114,7 @@
         width: 34%!important;
     }
 }
-@media (min-width: 780px) and (max-width: 1326px){
+@media (min-width: 780px) and (max-width: 1349px){
     .heading{
         width: 44%!important;
     }
