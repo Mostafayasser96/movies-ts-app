@@ -38,6 +38,8 @@ const MyMovieCard: FC<Card> = (movie: {
    genre_ids: number;
    id: number;
    poster_path: string;
+   media_type?: String;
+   popularity?: number;
 }) => {
   // the tooltip of the card
   const MyCardTooltip = (props: JSX.IntrinsicAttributes & TooltipProps & React.RefAttributes<HTMLDivElement>) => {

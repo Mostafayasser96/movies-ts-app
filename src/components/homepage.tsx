@@ -20,11 +20,14 @@ import {
 import MyMovieCard from '../cards/moviecard';
 import MySerieCard from '../cards/seriecard';
 import { useNavigate } from 'react-router-dom';
-import { Button, ButtonGroup } from 'react-bootstrap';
+import { 
+  Button, 
+  ButtonGroup 
+} from 'react-bootstrap';
 
 
 const Main = () => {
-  // these are states an functions for the first 3 apis'
+  // these are states and functions for the first 3 apis'
   const [recMovie, setRecMovie] = useState<Card[]>([]);
   const [recTv, setRecTv] = useState<Card[]>([]);
   const [trending, setTrending] = useState<Card[]>([]);
@@ -36,18 +39,21 @@ const Main = () => {
       .then(data => {
         console.log(data);
         let shows: Card[] = [];
-        for(let i = 0; i <= 12; i++){
+        for(let i = 0; i < 12; i++){
           shows.push(data);
           console.log(shows);
           setRecMovie(shows);
           setRecTv([]);
           setTrending([]);
         }
-       
-       
-       
-        // setRecMovie(data);
+
+         // setRecMovie(data);
         // setRecMovie([]);
+
+        // // carouselData approach
+        // setRecMovie(data);
+        // setRecTv([]);
+        // setTrending([]);
         
       });
   }
@@ -83,13 +89,17 @@ const Main = () => {
           setRecMovie([]);
           setRecTv([]);
         }
+
+        // // carouselData approach
         // setTrending(data);
+        // setRecMovie([]);
+        // setRecTv([]);
       });
   }
   // these are states for 3 latest sections
-  const [latestMovies, setLatestMovies] = useState<Card[]>();
-  const [latestTv, setLatestTv] = useState<Card[]>();
-  const [requested, setRequested] = useState<Card[]>();
+  const [latestMovies, setLatestMovies] = useState<Card[]>([]);
+  const [latestTv, setLatestTv] = useState<Card[]>([]);
+  const [requested, setRequested] = useState<Card[]>([]);
   const handleLatestMovies = () => {
     const apiKey = process.env.REACT_APP_API_KEY;
     fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=1`)

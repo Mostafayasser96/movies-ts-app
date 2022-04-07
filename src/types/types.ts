@@ -1,8 +1,10 @@
+import { StringLiteralLike } from "typescript";
+
 export interface CarouselData{
   json: any;
   dates: Dates;
   page: number;
-  results: Array<Movie>
+  results: Array<Card>
 }
 interface Dates{
     maximum: string;
@@ -130,6 +132,7 @@ interface SpokenLanguages{
 //   movie: Array<Movie>;
 //   serie: Array<Season>;
 // }
+
 
 
 export interface Card {

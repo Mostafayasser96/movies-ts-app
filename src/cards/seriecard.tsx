@@ -34,6 +34,8 @@ const MySerieCard: FC<Card> = (serie: {
   last_air_date: string;
   overview: string;
   poster_path: string;
+  media_type?: String;
+  popularity?: number;
 }) => {
   // the tooltip of the card
   const MyCardTooltip = (props: JSX.IntrinsicAttributes & TooltipProps & React.RefAttributes<HTMLDivElement>) => {
