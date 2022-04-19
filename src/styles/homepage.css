@@ -43,11 +43,11 @@
     padding: 0px!important;
   }
   .movies-btn{
-    background-color: #569cdb!important;
+    /* background-color: #569cdb!important; */
     font-weight: 300!important;
   }
   .shows-btn, .trending-btn{
-    background-color: #25313f!important;
+    background-color: #25313f;
     font-weight: 300!important;
   }
   .movies-btn:hover, .shows-btn:hover, .trending-btn:hover{

@@ -4,6 +4,9 @@
     border-bottom: none!important;
     border-radius: 7px;
   }
+  .modal-body{
+    background-color: rgb(41, 39, 39)!important;
+  }
   .exit-i{
     /* padding-left: 95%; */
     font-size: 17px;
@@ -17,6 +20,7 @@
   .login-title span{
     padding-left: 15px;
     color: rgb(79 79 79);
+    border-radius: 0px!important;
   }
   .form-group1{
     padding-bottom: 24px;
@@ -54,7 +58,7 @@
     text-align: center;
     display: flex;
     justify-content: space-around;
-    width: 57%;
-    margin-left: 21%;
+    width: 100%;
+    background-color: rgb(41, 39, 39)!important;
   }
   /* end of header login modal */

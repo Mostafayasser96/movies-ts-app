@@ -16,10 +16,10 @@ import {
   TooltipProps
 
 } from "react-bootstrap";
-import { 
+import {
   CardProps,
   CarouselData,
-  Movie, 
+  Movie,
   Card,
   Season
 } from '../types/types';
@@ -28,18 +28,18 @@ import { Dropdown } from 'react-bootstrap';
 
 
 
-const MyMovieCard: FC<Card> = (movie: { 
-   title: string;
-   vote_average: number;
-   release_date: string;
-   vote_count: number;
-   overview: string;
-   original_language: string;
-   genre_ids: number;
-   id: number;
-   poster_path: string;
-   media_type?: String;
-   popularity?: number;
+const MyMovieCard: FC<Card> = (movie: {
+  title: string;
+  vote_average: number;
+  release_date: string;
+  vote_count: number;
+  overview: string;
+  original_language: string;
+  genre_ids: number;
+  id: number;
+  poster_path: string;
+  media_type?: String;
+  popularity?: number;
 }) => {
   // the tooltip of the card
   const MyCardTooltip = (props: JSX.IntrinsicAttributes & TooltipProps & React.RefAttributes<HTMLDivElement>) => {
@@ -62,13 +62,13 @@ const MyMovieCard: FC<Card> = (movie: {
           </span>
           <span className='production-year'>
             {movie?.release_date?.slice(0, 4)}
-            </span>
+          </span>
           <span className='duration'>
             {movie?.id}
-            </span>
+          </span>
           <span className='quality'>
             {movie?.vote_count}
-            </span>
+          </span>
         </div>
         <p className='abstract'>
           {movie?.overview}
@@ -76,14 +76,14 @@ const MyMovieCard: FC<Card> = (movie: {
         <div className='movie-data2'>
           <p className='country-p'>
             Country:
-            <a href='#' className='country'> 
-            {movie?.original_language}
+            <a href='#' className='country'>
+              {movie?.original_language}
             </a>
           </p>
           <p className='genre-p'>
             Genre:
-            <a href='#' className='genre'> 
-            {movie?.genre_ids}
+            <a href='#' className='genre'>
+              {movie?.genre_ids}
             </a>
           </p>
         </div>
@@ -110,7 +110,7 @@ const MyMovieCard: FC<Card> = (movie: {
     '1980s', '1970s', '1960s', '1950s', '1940s', '1930s', '1920s', '1910s', '1900s'
   ]
   return (
-    
+
     <OverlayTrigger
       placement='right'
       overlay={MyCardTooltip}
@@ -143,28 +143,35 @@ const MyMovieCard: FC<Card> = (movie: {
           HD
         </div>
         <div className='card-info'>
-          <p className='show-name text-white'>
-            {movie?.title}
-          </p>
           <div className='show-info'>
-            <div className='sub-info'>
-              <div className='year'>
-                {movie?.release_date?.slice(0, 4)}
+            <p className='show-name text-white'>
+              {movie?.title}
+            </p>
+            <div className='main-info d-flex justify-content-between'>
+              
+              <div className='show-time'>
+                {movie?.id}
               </div>
               <span className='dot-span'></span>
-              <div className='show-time'>
-               {movie?.id}
+              <div className='sub-info '>
+                <div className='year'>
+                  {movie?.release_date?.slice(0, 4)}
+                </div>
               </div>
             </div>
-            <div className='show-type'>
-              movie
-            </div>
+
+
+          </div>
+
+          <div className='show-type'>
+            movie
+
           </div>
         </div>
 
       </div>
     </OverlayTrigger>
-  
+
   )
 }
 export default MyMovieCard;

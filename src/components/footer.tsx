@@ -4,9 +4,33 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { ListGroup } from 'react-bootstrap';
 import '../styles/footer.css';
+import { Link } from '../types/types';
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
-	const links1: string[] = ['Links', 'Movies', 'TV-Shows', 'Most Watched', 'Top IMDb'];
+	const navigate = useNavigate();
+	const links1: Link[] = [
+		{
+			value: 'Links',
+			path: ''
+		},
+		{
+			value: 'Movies',
+			path: '/movies'
+		},
+		{
+			value: 'TV-Shows',
+			path: '/Tv-series'
+		},
+		{
+			value: 'Most-Watched',
+			path: '/most-watched'
+		},
+		{
+			value: 'Top-IMDB',
+			path: '/top-imdb'
+		}
+	];
 	const links2: string[] = ['Action Movies', 'Horror Movies', 'Sci-fi Movies', 'Thriller Movies'];
 	const links3: string[] = ['Contact', 'Request'];
 	return (
@@ -36,20 +60,25 @@ const Footer = () => {
 				<ListGroup className='links-group1'>
 
 					{links1.map((link, index) =>
-						<ListGroup.Item key={index} className='link1'>{link}</ListGroup.Item>
+						<ListGroup.Item key={index}
+							className='link1'
+							onClick={() => navigate(link.path)}
+						>
+							{link.value}
+						</ListGroup.Item>
 					)}
 
 				</ListGroup>
 				<ListGroup className='links-group2'>
 
-					{links2.map((link, index) => 
-						 <ListGroup.Item key={index} className='link2'>{link}</ListGroup.Item>
+					{links2.map((link, index) =>
+						<ListGroup.Item key={index} className='link2'>{link}</ListGroup.Item>
 					)}
 				</ListGroup>
 				<ListGroup className='links-group3'>
 
-					{links3.map((link, index) => 
-						<ListGroup.Item key={index}  className='link3'>{link}</ListGroup.Item>
+					{links3.map((link, index) =>
+						<ListGroup.Item key={index} className='link3'>{link}</ListGroup.Item>
 					)}
 				</ListGroup>
 			</div>

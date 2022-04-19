@@ -1,4 +1,4 @@
-import React from "react";
+import React, { SetStateAction } from "react";
 import MyCarousel from "../components/carousel";
 import Footer from "../components/footer";
 import Info from "../components/info";
@@ -15,7 +15,9 @@ const Home = () => {
         <div className="home">
           <Header />
           <MyCarousel />
-          <Main />
+          <Main id={0} value={""} active={false} setActiveButton={function (value: SetStateAction<number>): void {
+          throw new Error("Function not implemented.");
+        } } />
           <Footer />
           {/* <Info /> */}
 

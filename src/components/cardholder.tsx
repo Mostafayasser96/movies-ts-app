@@ -39,19 +39,21 @@ const Main2 = () => {
   const handleMovies = () => {
     const apiKey = process.env.REACT_APP_API_KEY;
     fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`)
-      .then(response => response.json() as Promise<Card[]>)
+      .then(response => response.json() as Promise<CarouselData>)
       .then(data => {
         console.log(data);
-        setMovies(data);
+        let shows: Card[] = data.results;
+        setMovies(shows);
       });
   }
   const handleTopRated = () => {
     const apiKey = process.env.REACT_APP_API_KEY;
     fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`)
-      .then(response => response.json() as Promise<Card[]>)
+      .then(response => response.json() as Promise<CarouselData>)
       .then(data => {
         console.log(data);
-        setTopRated(data);
+        let shows: Card[] = data.results;
+        setTopRated(shows);
       });
   }
   const handleSeries = () => {
@@ -117,9 +119,9 @@ const Main2 = () => {
         {name == 'Tv-series' && tvSeries?.map((serie, index) => 
           <MySerieCard key={index} {...serie} />
         )}
-        {/* {name == 'top-imdb' && topRated?.map((movie, index) =>
+        {name == 'top-imdb' && topRated?.map((movie, index) =>
           <MyTopRatedCard key={index} {...movie} />
-        )} */}
+        )}
       </div>
     </div>
   )

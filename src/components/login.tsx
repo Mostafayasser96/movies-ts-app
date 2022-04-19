@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/login.css";
 import {
@@ -6,12 +6,18 @@ import {
 	Form,
 	FormGroup,
 	Modal,
-	ModalHeader
+	ModalHeader,
+	
 } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
-function Login(props: { show: boolean; onHide: () => void }) {
+
+
+
+
+const Login = (props: {show: boolean; onHide: () => void;}) => {
+
 	const LoginForm = () => {
 		return (
 			<Form className="login-form" >
@@ -44,29 +50,49 @@ function Login(props: { show: boolean; onHide: () => void }) {
 		)
 	}
 	return (
+		<div>
 		<Modal centered
 			aria-labelledby='contained-modal-title-vcenter'
 			{...props}
-			
 		>
-			<ModalHeader className="login d-block" >
+			<Modal.Header className="login d-block">
 				<Modal.Title id='contained-modal-title-vcenter' className="login-title">
-				<FontAwesomeIcon icon={faXmark} className='exit-i d-block' />
+					<FontAwesomeIcon icon={faXmark}  
+					                 className='exit-i d-block' 
+									
+									 />
 					<span>Sign In</span>
-				
+
 				</Modal.Title>
-				<Modal.Body>
-					<LoginForm />
-				</Modal.Body>
-				<Modal.Footer className="login-footer">
-					{/* note: the anchor element here must be changed to Link with react router */}
-					<p className="acc-check">Don't have an account?</p>
-					<a href="#" className="register-btn">Register</a>
-				</Modal.Footer>
-			</ModalHeader>
+			</Modal.Header>
+			<Modal.Body className="modal-body">
+				<LoginForm />
+			</Modal.Body>
+			<Modal.Footer className="login-footer">
+				{/* note: the anchor element here must be changed to Link with react router */}
+				<p className="acc-check">Don't have an account?</p>
+				<a href="#" className="register-btn">Register</a>
+			</Modal.Footer>
+
 		</Modal>
+		</div>
+
 	)
 }
 export default Login;
 
 
+
+// export default function Login(props: {open: boolean; setOpen: () => void}){
+// 	const {open, setOpen} = props;
+// 	return(
+// 		<Modal show={open} as={Fragment}>
+//            <div>
+// 			   <h1>this is the modal</h1>
+// 			   <button type="button" onClick={() => setOpen(false)}>
+
+// 			   </button>
+// 		   </div>
+// 		</Modal>
+// 	)
+// }

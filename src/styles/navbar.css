@@ -115,12 +115,12 @@
   .profile{
     width: 35px;
     height: 35px;
-    background-color: #FFFFFF8C;
+    background-color: #FFFFFF8C!important;
     border-radius: 30px;
     padding-right: 2px;
   }
   .profile-i{
-    color: white;
+    color: #FFFFFF8C!important;
     font-size: 25px;
     padding-top: 6px;
   }

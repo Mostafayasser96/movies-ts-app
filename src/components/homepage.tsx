@@ -7,7 +7,9 @@ import {
   faList,
   faChartLine,
   faCircleChevronRight,
-  faPlay
+  faPlay,
+  faBookJournalWhills,
+  IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
 import {
   CarouselData,
@@ -15,45 +17,43 @@ import {
   CardProps,
   Season,
   Movie,
-  Card
+  Card,
+  MyButton
 } from '../types/types';
 import MyMovieCard from '../cards/moviecard';
 import MySerieCard from '../cards/seriecard';
 import { useNavigate } from 'react-router-dom';
-import { 
-  Button, 
-  ButtonGroup 
+import {
+  Button,
+  ButtonGroup
 } from 'react-bootstrap';
+import { isTemplateExpression } from 'typescript';
 
 
-const Main = () => {
+
+const Main = (props: {
+  id: number; 
+  value: string; 
+  active: boolean; 
+  setActiveButton: React.Dispatch<React.SetStateAction<number>>
+}) => {
+
   // these are states and functions for the first 3 apis'
   const [recMovie, setRecMovie] = useState<Card[]>([]);
   const [recTv, setRecTv] = useState<Card[]>([]);
   const [trending, setTrending] = useState<Card[]>([]);
+  
 
   const handleRecMovie = () => {
     const apiKey = process.env.REACT_APP_API_KEY;
     fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`)
-      .then(response => response.json() as Promise<Card>)
+      .then(response => response.json() as Promise<CarouselData>)
       .then(data => {
-        console.log(data);
-        let shows: Card[] = [];
-        for(let i = 0; i < 12; i++){
-          shows.push(data);
-          console.log(shows);
-          setRecMovie(shows);
-          setRecTv([]);
-          setTrending([]);
-        }
-
-         // setRecMovie(data);
-        // setRecMovie([]);
-
-        // // carouselData approach
-        // setRecMovie(data);
-        // setRecTv([]);
-        // setTrending([]);
+        console.log(data.results);
+        let shows: Card[] = data.results;
+        setRecMovie(shows);
+        setRecTv([]);
+        setTrending([]);
         
       });
   }
@@ -64,36 +64,31 @@ const Main = () => {
       .then((data) => {
         console.log(data);
         let shows: Card[] = [];
-        for(let i = 0; i <= 12; i++){
+        for (let i = 0; i <= 12; i++) {
           shows.push(data);
           console.log(shows);
           setRecTv(shows);
           setRecMovie([]);
           setTrending([]);
         }
-        
-        
       });
   }
   const handleTrending = () => {
     const apiKey = process.env.REACT_APP_API_KEY;
     fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${apiKey}`)
-      .then(response => response.json() as Promise<Card>)
+      .then(response => response.json() as Promise<CarouselData>)
       .then(data => {
         console.log(data);
-        let shows: Card[] = [];
-        for(let i = 0; i <= 12; i++){
-          shows.push(data);
-          console.log(shows);
-          setTrending(shows);
-          setRecMovie([]);
-          setRecTv([]);
-        }
+        let shows: Card[] = data.results;
+        // for(let i = 0; i <= 12; i++){
+        //   shows.push(data);
+        //   console.log(shows); 
+        // }
 
-        // // carouselData approach
-        // setTrending(data);
-        // setRecMovie([]);
-        // setRecTv([]);
+        setTrending(shows);
+        setRecMovie([]);
+        setRecTv([]);
+      
       });
   }
   // these are states for 3 latest sections
@@ -103,16 +98,15 @@ const Main = () => {
   const handleLatestMovies = () => {
     const apiKey = process.env.REACT_APP_API_KEY;
     fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=1`)
-      .then(response => response.json() as Promise<Card>)
+      .then(response => response.json() as Promise<CarouselData>)
       .then(data => {
         console.log(data);
-        let shows: Card[] = [];
-        for(let i = 0; i <= 12; i++){
-          shows.push(data);
-          console.log(shows);
-          setLatestMovies(shows);
-        }
-       
+        let shows: Card[] = data.results;
+        // for(let i = 0; i <= 12; i++){
+        //   shows.push(data);
+        //   console.log(shows);
+        // }
+        setLatestMovies(shows);
         // setLatestMovies(data);
       });
   }
@@ -123,22 +117,21 @@ const Main = () => {
       .then(data => {
         console.log(data);
         let shows: Card[] = [];
-        for(let i = 0; i <= 12; i++){
+        for (let i = 0; i <= 12; i++) {
           shows.push(data)
         }
         setLatestTv(shows);
 
-        // setLatestTv(data);
       });
   }
   const handleRequested = () => {
     const apiKey = process.env.REACT_APP_API_KEY;
     fetch(`https://api.themoviedb.org/3/tv/latest?api_key=${apiKey}&language=en-US`)
-      .then(response => response.json() as Promise<Card> )
+      .then(response => response.json() as Promise<Card>)
       .then(data => {
         console.log(data);
         let shows: Card[] = [];
-        for(let i = 0; i <= 12; i++){
+        for (let i = 0; i <= 12; i++) {
           shows.push(data)
         }
         setRequested(shows);
@@ -148,7 +141,7 @@ const Main = () => {
   }
   // the api calls
   useEffect(() => {
-    // handleRecMovie();
+    handleRecMovie();
     handleLatestMovies();
     handleLatestTv();
     handleRequested();
@@ -156,6 +149,67 @@ const Main = () => {
   }, []);
   //  handling the useNavigate hook (for view all buttons)
   let navigate = useNavigate();
+  // const color: boolean = true;
+  // new approach for button group
+  const MyButton = (props: {
+    id: number; 
+    value: string; 
+    active: boolean; 
+    setActiveButton: React.Dispatch<React.SetStateAction<number>>;
+    className: string; 
+    handler: () => void;
+    icon: IconDefinition;
+    iconClass: string
+  }) => {
+    const clickHandler = () => {
+      props.setActiveButton(props.id);
+      props.handler();
+   }
+     return(
+       <button
+          className={props.className}
+          style={{ backgroundColor: `${props.active? '#25313f' : '#0d1218'}` }}
+          value={props.value}
+          onClick={() => clickHandler()}
+         >
+           <FontAwesomeIcon icon={props.icon} className={props.iconClass} />
+           {props.value}
+         </button>
+     )
+  }
+  const [activeButton, setActiveButton] = useState<number>(0);
+  const button_Data = [
+    {
+      name: 'movies',
+      value: 'Movies',
+      className: 'movies-btn',
+      handler: handleRecMovie,
+      icon: faPlay,
+      iconClass: 'main-stream-overlay-i'
+    },
+    {
+      name: 'tv-series',
+      value: 'TV-Series',
+      className: 'shows-btn',
+      handler: handleRecTv,
+      icon: faList,
+      iconClass: 'btn-i'
+    },
+    {
+      name: 'trending',
+      value: 'Trending',
+      className: 'trending-btn',
+      handler: handleTrending,
+      icon: faChartLine,
+      iconClass: 'btn-i'
+    }
+  ]
+
+
+
+
+
+
   return (
     <div className='main'>
       <div className='recommended'>
@@ -166,38 +220,65 @@ const Main = () => {
 
 
 
-          <ButtonGroup className='heading-btn-group'>
-            <Button type='submit'
+
+
+          {/* <div className='heading-btn-group'>
+            <button type='submit'
               className='movies-btn'
-            onClick={handleRecMovie}
+              id='moviesBtn'
+              onClick={handleRecMovie}
+              style={{ backgroundColor: color}}
             >
-              {/* note: the icon here isn't the same one as it's not consistent with react fa library */}
               <FontAwesomeIcon icon={faPlay} className='main-stream-overlay-i' />
               Movies
-            </Button>
-            <Button type='submit'
+            </button>
+            <button type='submit'
               className='shows-btn'
+              id='tv-series'
               onClick={handleRecTv}
             >
               <FontAwesomeIcon icon={faList} className='btn-i' />
               TV Shows
-            </Button>
-            <Button type='submit'
+            </button>
+            <button type='submit'
               className='trending-btn'
+              id='trendingBtn'
               onClick={handleTrending}
             >
               <FontAwesomeIcon icon={faChartLine} className='btn-i' />
               Trending
-            </Button>
-          </ButtonGroup>
+            </button>
+          </div> */}
 
 
-          {/* <span className='line'></span> */}
+          <div className='heading-btn-group'>
+            {button_Data.map((item, index) => (
+                 <MyButton 
+                 className={item.className}
+                 id={index}
+                 value={item.value} 
+                 setActiveButton={setActiveButton} 
+                 active={activeButton === index ? true : false}
+                 handler={item.handler}
+                 icon={item.icon}
+                 iconClass={item.iconClass}
+                 />
+        
+            ))}
+          </div>
+           
+
+           
+
+
+          
+
+
         </div>
         <div className='movies-card-list row'>
           {/* map method for recommended movies */}
-          {recMovie?.map((movie, index) => 
-             <MyMovieCard key={index} {...movie} />
+          {recMovie?.map((movie, index) =>
+            <MyMovieCard key={index} {...movie} />
           )}
           {/* map method for recommended TV-shows */}
           {recTv?.map((serie, index) =>
@@ -205,7 +286,7 @@ const Main = () => {
           )}
           {/* map method for trending movies */}
           {trending?.map((movie, index) =>
-            <MyMovieCard key={index} {...movie}  />
+            <MyMovieCard key={index} {...movie} />
           )}
         </div>
 

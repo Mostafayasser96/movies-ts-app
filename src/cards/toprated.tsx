@@ -18,12 +18,25 @@ import {
 import {
 	CardProps,
 	CarouselData,
-	Movie
+	Movie,
+	Card
 } from '../types/types';
 import { Dropdown } from 'react-bootstrap';
 
 
-const MyTopRatedCard: FC<Movie> = (movie) => {
+const MyTopRatedCard: FC<Card> = (movie: {
+	title: string;
+    vote_average: number;
+    release_date: string;
+    vote_count: number;
+    overview: string;
+    original_language: string;
+    genre_ids: number;
+    id: number;
+    poster_path: string;
+    media_type?: String;
+    popularity?: number;
+}) => {
 	// the tooltip of the card
 	const MyCardTooltip = (props: JSX.IntrinsicAttributes & TooltipProps & React.RefAttributes<HTMLDivElement>) => {
 

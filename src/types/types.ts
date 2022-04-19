@@ -1,3 +1,4 @@
+import React from "react";
 import { StringLiteralLike } from "typescript";
 
 export interface CarouselData{
@@ -150,3 +151,14 @@ export interface Card {
   original_language: string;
   last_air_date: string;
 };
+
+export 	interface Link{
+  value: string;
+  path: string;
+}
+export interface MyButton{
+  name: string;
+  value: string;
+  isActive: number;
+  handler: React.FC;
+}
