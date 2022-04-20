@@ -162,3 +162,13 @@ export interface MyButton{
   isActive: number;
   handler: React.FC;
 }
+export interface Inputs{
+  email: string;
+  emailRequired: string;
+  title: string;
+  titleRequired: string;
+  link: string;
+  linkRequired: string;
+  captcha: string;
+  captchaRequired: string;
+}

@@ -15,8 +15,11 @@ const Home = () => {
         <div className="home">
           <Header />
           <MyCarousel />
-          <Main id={0} value={""} active={false} setActiveButton={function (value: SetStateAction<number>): void {
-          throw new Error("Function not implemented.");
+          <Main id={0} 
+                value={""} 
+                active={false} 
+                setActiveButton={function (value: SetStateAction<number>): void {
+                   throw new Error("Function not implemented.");
         } } />
           <Footer />
           {/* <Info /> */}
